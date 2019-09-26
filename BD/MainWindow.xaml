@@ -1,0 +1,31 @@
+﻿<Window x:Class="BD.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BD"
+        mc:Ignorable="d"
+        Title="Непрерывные сети" Height="450" Width="800" Closing="Window_Closing">
+    <Grid>
+        <Menu HorizontalAlignment="Left" Height="25" VerticalAlignment="Top">
+            <MenuItem Header="Файл">
+                <MenuItem x:Name="MenuItemExit" Header="Выход" Click="MenuItemExit_Click"></MenuItem>
+            </MenuItem>
+            <MenuItem Header="Описание">
+                <MenuItem Header="Ввод с клавиатуры"></MenuItem>
+                <MenuItem Header="Ввод из файла"></MenuItem>
+            </MenuItem>
+            <MenuItem Header="Редактирование"></MenuItem>
+            <MenuItem Header="Директивы расчета">
+                <MenuItem Header="Вид частотной характеристики"></MenuItem>
+                <MenuItem Header="Вх/вых узлы"></MenuItem>
+            </MenuItem>
+            <MenuItem Header="Вид">
+                <MenuItem Header="Собственный браузер"></MenuItem>
+                <MenuItem Header="Системный браузер"></MenuItem>
+            </MenuItem>
+            <MenuItem Header="Расчет"></MenuItem>
+            <MenuItem Header="Интернет"></MenuItem>
+        </Menu>
+    </Grid>
+</Window>
