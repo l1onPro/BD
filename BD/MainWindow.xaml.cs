@@ -22,7 +22,7 @@ namespace BD
     {
         public MainWindow()
         {
-            InitializeComponent();
+            InitializeComponent();            
         }
 
         /// <summary>
@@ -44,7 +44,18 @@ namespace BD
         {
             bool exit = MessageBox.Show("Вы действительно хотите выйти?", "Выход", MessageBoxButton.YesNo) == MessageBoxResult.Yes;
             if (exit) e.Cancel = false;
-            else e.Cancel = true;
+            else e.Cancel = true;            
+        }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Приложение было разработано на WPF.", "Справка", MessageBoxButton.OK);
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Page1 p1 = new Page1(frame1);
+            frame1.Navigate(p1);
         }
     }
 }
