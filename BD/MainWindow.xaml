@@ -20,6 +20,7 @@
         <Menu Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" Background="LightGray" Height="30" Padding="0,5,0,5" VerticalAlignment="Top">
             <MenuItem Header="Файл">
                 <MenuItem Header="Откыть файл"></MenuItem>
+                <MenuItem Header="Ввести с клавиатуры" Click="MenuItem_Click_1"></MenuItem>
                 <Separator></Separator>
                 <MenuItem x:Name="MenuItemExit" Header="Выход" Click="MenuItemExit_Click"></MenuItem>
             </MenuItem>         
@@ -41,7 +42,7 @@
 
             <StackPanel>
                 <Button Height="35" Margin="0,2,1,1" Content="Главная" Background="White"/>
-                <Button Height="30" Margin="2,0,1,1" Content="Ввод с клавиатуры" Background="#FFF0F0F0" Click="Button_Click"/>
+                <Button Height="30" Margin="2,0,1,1" Content="Описание" Background="#FFF0F0F0" Click="Button_Click"/>
                 <Button Height="30" Margin="2,0,1,1" Content="Редактирование" Background="#FFF0F0F0"/>
             </StackPanel>
         </Grid>

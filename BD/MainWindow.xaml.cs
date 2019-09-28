@@ -49,13 +49,19 @@ namespace BD
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Приложение было разработано на WPF.", "Справка", MessageBoxButton.OK);
+            MessageBox.Show("Приложение разработано на WPF.", "Справка", MessageBoxButton.OK);
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             Page1 p1 = new Page1(frame1);
             frame1.Navigate(p1);
+        }
+
+        private void MenuItem_Click_1(object sender, RoutedEventArgs e)
+        {
+            Page2 p2 = new Page2(frame1);
+            frame1.Navigate(p2);
         }
     }
 }
