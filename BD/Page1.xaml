@@ -8,8 +8,8 @@
       d:DesignHeight="474" d:DesignWidth="389"
       Title="Page1">
 
-    <Grid>
-        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">            
+    <Grid>       
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">               
             <Button Content="Ввод с клавиатуры" Width="200" Height="50" Click="Button_Click"></Button>
             <Label Margin="0,0,0,30"></Label>
             <Button Content="Ввод с файла" Width="200" Height="50"></Button>

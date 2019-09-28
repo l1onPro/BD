@@ -16,12 +16,12 @@ using System.Windows.Shapes;
 namespace BD
 {
     /// <summary>
-    /// Логика взаимодействия для Page4.xaml
+    /// Логика взаимодействия для Page5.xaml
     /// </summary>
-    public partial class Page4 : Page
+    public partial class Page5 : Page
     {
         Frame frame;
-        public Page4(Frame _frame)
+        public Page5(Frame _frame)
         {
             InitializeComponent();
             frame = _frame;
@@ -29,8 +29,7 @@ namespace BD
 
         private void AcceptButton_Click(object sender, RoutedEventArgs e)
         {
-            Page5 p5 = new Page5(frame);
-            frame.Navigate(p5);
+
         }
     }
 }

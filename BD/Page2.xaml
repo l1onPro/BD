@@ -8,73 +8,76 @@
        d:DesignHeight="474" d:DesignWidth="389"
       Title="Page2">
 
-    <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="0.5*"></ColumnDefinition>
-            <ColumnDefinition Width="0.5*"></ColumnDefinition>
-        </Grid.ColumnDefinitions>
+    <Grid>
+        <Label Content="Размерность схемы"></Label>
+        <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.5*"></ColumnDefinition>
+                <ColumnDefinition Width="0.5*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
 
-        <StackPanel Grid.Column="0">
-            <StackPanel Orientation="Horizontal">
-                <TextBox Width="50" Height="20"></TextBox>
-                <Label Content="Число узлов"></Label>
+            <StackPanel Grid.Column="0">
+                <StackPanel Orientation="Horizontal">
+                    <TextBox Width="50" Height="20"></TextBox>
+                    <Label Content="Число узлов"></Label>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBox Width="50" Height="20"></TextBox>
+                    <Label Content="Резисторы"></Label>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBox Width="50" Height="20"></TextBox>
+                    <Label Content="Конденсаторы"></Label>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBox Width="50" Height="20"></TextBox>
+                    <Label Content="Индуктивности"></Label>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBox Width="50" Height="20"></TextBox>
+                    <Label Content="ИТУН"></Label>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBox Width="50" Height="20"></TextBox>
+                    <Label Content="ИТУН"></Label>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBox Width="50" Height="20"></TextBox>
+                    <Label Content="ИТУН"></Label>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBox Width="50" Height="20"></TextBox>
+                    <Label Content="ИТУН"></Label>
+                </StackPanel>
             </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <TextBox Width="50" Height="20"></TextBox>
-                <Label Content="Резисторы"></Label>
+            <StackPanel Grid.Column="1">
+                <StackPanel Orientation="Horizontal">
+                    <TextBox Width="50" Height="20"></TextBox>
+                    <Label Content="Б/П транзисторы"></Label>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBox Width="50" Height="20"></TextBox>
+                    <Label Content="У/п транзисторы"></Label>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBox Width="50" Height="20"></TextBox>
+                    <Label Content="Опер. усилители"></Label>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBox Width="50" Height="20"></TextBox>
+                    <Label Content="Трансформаторы"></Label>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBox Width="50" Height="20"></TextBox>
+                    <Label Content="Ид. опер. усилители"></Label>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBox Width="50" Height="20"></TextBox>
+                    <Label Content="Ид. Трансформаторы"></Label>
+                </StackPanel>
+
+                <Button x:Name="acceptButton" Content="Ok" IsDefault="True" Width="80" Click="AcceptButton_Click" Margin="0,20,0,0"></Button>
             </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <TextBox Width="50" Height="20"></TextBox>
-                <Label Content="Конденсаторы"></Label>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <TextBox Width="50" Height="20"></TextBox>
-                <Label Content="Индуктивности"></Label>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <TextBox Width="50" Height="20"></TextBox>
-                <Label Content="ИТУН"></Label>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <TextBox Width="50" Height="20"></TextBox>
-                <Label Content="ИТУН"></Label>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <TextBox Width="50" Height="20"></TextBox>
-                <Label Content="ИТУН"></Label>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <TextBox Width="50" Height="20"></TextBox>
-                <Label Content="ИТУН"></Label>
-            </StackPanel>
-        </StackPanel>
-        <StackPanel Grid.Column="1">
-            <StackPanel Orientation="Horizontal">
-                <TextBox Width="50" Height="20"></TextBox>
-                <Label Content="Б/П транзисторы"></Label>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <TextBox Width="50" Height="20"></TextBox>
-                <Label Content="У/п транзисторы"></Label>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <TextBox Width="50" Height="20"></TextBox>
-                <Label Content="Опер. усилители"></Label>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <TextBox Width="50" Height="20"></TextBox>
-                <Label Content="Трансформаторы"></Label>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <TextBox Width="50" Height="20"></TextBox>
-                <Label Content="Ид. опер. усилители"></Label>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <TextBox Width="50" Height="20"></TextBox>
-                <Label Content="Ид. Трансформаторы"></Label>
-            </StackPanel>
-            
-            <Button x:Name="acceptButton" Content="Ok" IsDefault="True" Width="80" Click="AcceptButton_Click" Margin="0,20,0,0"></Button>
-        </StackPanel>
-    </Grid>
+        </Grid>
+    </Grid>    
 </Page>

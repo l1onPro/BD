@@ -63,5 +63,16 @@ namespace BD
             Page2 p2 = new Page2(frame1);
             frame1.Navigate(p2);
         }
+
+        private void MenuItem_Click_2(object sender, RoutedEventArgs e)
+        {
+            Page5 p5 = new Page5(frame1);
+            frame1.Navigate(p5);
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            
+        }
     }
 }
