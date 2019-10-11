@@ -19,33 +19,33 @@
 
         <Menu Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" Background="LightGray" Height="30" Padding="0,5,0,5" VerticalAlignment="Top">
             <MenuItem Header="Файл">
-                <MenuItem Header="Откыть файл"></MenuItem>
-                <MenuItem Header="Ввести с клавиатуры" Click="MenuItem_Click_1"></MenuItem>
+                <MenuItem x:Name="MIOpenFile" Header="Откыть файл" Click="MIOpenFile_Click"></MenuItem>
+                <MenuItem x:Name="MIInpKeyboard" Header="Ввести с клавиатуры" Click="MIInpKeyboard_Click"></MenuItem>
                 <Separator></Separator>
-                <MenuItem x:Name="MenuItemExit" Header="Выход" Click="MenuItemExit_Click"></MenuItem>
+                <MenuItem x:Name="MIExit" Header="Выход" Click="MIExit_Click"></MenuItem>
             </MenuItem>         
             
             <MenuItem Header="Директивы расчета">
-                <MenuItem Header="Вид частотной характеристики" Click="MenuItem_Click_2"></MenuItem>
-                <MenuItem Header="Вх/вых узлы"></MenuItem>
+                <MenuItem x:Name="MITypeFreqResponse" Header="Вид частотной характеристики" Click="MITypeFreqResponse_Click"></MenuItem>
+                <MenuItem x:Name="MIInpOutNodes" Header="Вх/вых узлы" Click="MIInpOutNodes_Click"></MenuItem>
             </MenuItem>
             <MenuItem Header="Вид">
-                <MenuItem Header="Собственный браузер"></MenuItem>
-                <MenuItem Header="Системный браузер"></MenuItem>
+                <MenuItem x:Name="MIOwnBrow" Header="Собственный браузер" Click="MIOwnBrow_Click"></MenuItem>
+                <MenuItem x:Name="MISysBrow" Header="Системный браузер" Click="MISysBrow_Click"></MenuItem>
             </MenuItem>
-            <MenuItem Header="Расчет"></MenuItem>
-            <MenuItem Header="Интернет"></MenuItem>
-            <MenuItem Header="Справка" Click="MenuItem_Click"></MenuItem>
+            <MenuItem x:Name="MICalculate" Header="Расчет" Click="MICalculate_Click"></MenuItem>
+            <MenuItem x:Name="MIInternet" Header="Интернет" Click="MIInternet_Click"></MenuItem>
+            <MenuItem x:Name="MIAbout" Header="Справка" Click="MIAbout_Click"></MenuItem>
         </Menu>
         
         <Grid Grid.Row="1" Grid.Column="0" Background="LightGreen">
 
             <StackPanel>
-                <Button Height="35" Margin="0,2,1,1" Content="Главная" Background="White" Click="Button_Click_1"/>
-                <Button Height="30" Margin="2,0,1,1" Content="Описание" Background="#FFF0F0F0" Click="Button_Click"/>
-                <Button Height="30" Margin="2,0,1,1" Content="Редактирование" Background="#FFF0F0F0"/>
+                <Button x:Name="btnMainPage" Height="35" Margin="0,2,1,1" Content="Главная" Background="White" Click="btnMainPage_Click" />
+                <Button x:Name="btnDescript" Height="30" Margin="2,0,1,1" Content="Описание" Background="#FFF0F0F0" Click="btnDescript_Click" />
+                <Button x:Name="btnEdit" Height="30" Margin="2,0,1,1" Content="Редактирование" Background="#FFF0F0F0" Click="btnEdit_Click"/>
             </StackPanel>
         </Grid>
-        <Frame Name="frame1" Grid.Row="1" Grid.Column="1" Background="Pink" NavigationUIVisibility="Visible"/>
+        <Frame Name="mainWindowFrame" Grid.Row="1" Grid.Column="1" Background="Pink" NavigationUIVisibility="Visible" Margin="4,0,-4,0"/>
     </Grid>
 </Window>

@@ -25,21 +25,6 @@ namespace BD
             InitializeComponent();            
         }
 
-        /// <summary>
-        /// Закрытие программы через меню
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void MenuItemExit_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-        }      
-
-        /// <summary>
-        /// Закрыть программу
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             bool exit = MessageBox.Show("Вы действительно хотите выйти?", "Выход", MessageBoxButton.YesNo) == MessageBoxResult.Yes;
@@ -47,32 +32,77 @@ namespace BD
             else e.Cancel = true;            
         }
 
-        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        /// <summary>
+        /// Close program from MenuItem
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void MIExit_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Приложение разработано на WPF.", "Справка", MessageBoxButton.OK);
+            this.Close();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void MIAbout_Click(object sender, RoutedEventArgs e)
         {
-            Page1 p1 = new Page1(frame1);
-            frame1.Navigate(p1);
+            MessageBox.Show("Приложение разработано на WPF студентами группы 6302.", "Справка", MessageBoxButton.OK);
         }
 
-        private void MenuItem_Click_1(object sender, RoutedEventArgs e)
+        private void MIInpKeyboard_Click(object sender, RoutedEventArgs e)
         {
-            Page2 p2 = new Page2(frame1);
-            frame1.Navigate(p2);
+            Page2 p2 = new Page2(mainWindowFrame);
+            mainWindowFrame.Navigate(p2);
         }
 
-        private void MenuItem_Click_2(object sender, RoutedEventArgs e)
+        private void MITypeFreqResponse_Click(object sender, RoutedEventArgs e)
         {
-            Page5 p5 = new Page5(frame1);
-            frame1.Navigate(p5);
+            Page5 p5 = new Page5(mainWindowFrame);
+            mainWindowFrame.Navigate(p5);
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void btnMainPage_Click(object sender, RoutedEventArgs e)
         {
-            
+
+        }
+
+        private void btnDescript_Click(object sender, RoutedEventArgs e)
+        {
+            Page1 p1 = new Page1(mainWindowFrame);
+            mainWindowFrame.Navigate(p1);
+        }
+
+        private void btnEdit_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void MIOpenFile_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void MIInpOutNodes_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void MIOwnBrow_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void MISysBrow_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void MICalculate_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void MIInternet_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
