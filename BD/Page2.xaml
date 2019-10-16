@@ -4,10 +4,34 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:BD"
+      xmlns:localEx="clr-namespace:BD.Exeption"
       mc:Ignorable="d" 
        d:DesignHeight="474" d:DesignWidth="389"
       Title="Page2">
 
+    <Page.Resources>       
+        <Style TargetType="{x:Type TextBox}">
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="Margin" Value="0,2,30,2" />
+            <Setter Property="Validation.ErrorTemplate">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <DockPanel LastChildFill="true">
+                            <Border Background="Red" DockPanel.Dock="right" Margin="5,0,0,0" Width="20" Height="20" CornerRadius="10"
+                                    ToolTip="{Binding ElementName=customAdorner, Path=AdornedElement.(Validation.Errors)[0].ErrorContent}">
+                                <TextBlock Text="!" VerticalAlignment="center" HorizontalAlignment="center" FontWeight="Bold" Foreground="white">
+                                </TextBlock>
+                            </Border>
+                            <AdornedElementPlaceholder Name="customAdorner" VerticalAlignment="Center" >
+                                <Border BorderBrush="red" BorderThickness="1" />
+                            </AdornedElementPlaceholder>
+                        </DockPanel>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Page.Resources>
+    
     <Grid>
         <Label Content="Размерность схемы"></Label>
         <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
@@ -17,66 +41,260 @@
             </Grid.ColumnDefinitions>
 
             <StackPanel Grid.Column="0">
-                <StackPanel Orientation="Horizontal">
-                    <TextBox Width="50" Height="20"></TextBox>
-                    <Label Content="Число узлов"></Label>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <TextBox Width="50" Height="20"></TextBox>
-                    <Label Content="Резисторы"></Label>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <TextBox Width="50" Height="20"></TextBox>
-                    <Label Content="Конденсаторы"></Label>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <TextBox Width="50" Height="20"></TextBox>
-                    <Label Content="Индуктивности"></Label>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <TextBox Width="50" Height="20"></TextBox>
-                    <Label Content="ИТУН"></Label>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <TextBox Width="50" Height="20"></TextBox>
-                    <Label Content="ИТУН"></Label>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <TextBox Width="50" Height="20"></TextBox>
-                    <Label Content="ИТУН"></Label>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <TextBox Width="50" Height="20"></TextBox>
-                    <Label Content="ИТУН"></Label>
-                </StackPanel>
-            </StackPanel>
-            <StackPanel Grid.Column="1">
-                <StackPanel Orientation="Horizontal">
-                    <TextBox Width="50" Height="20"></TextBox>
-                    <Label Content="Б/П транзисторы"></Label>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <TextBox Width="50" Height="20"></TextBox>
-                    <Label Content="У/п транзисторы"></Label>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <TextBox Width="50" Height="20"></TextBox>
-                    <Label Content="Опер. усилители"></Label>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <TextBox Width="50" Height="20"></TextBox>
-                    <Label Content="Трансформаторы"></Label>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <TextBox Width="50" Height="20"></TextBox>
-                    <Label Content="Ид. опер. усилители"></Label>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <TextBox Width="50" Height="20"></TextBox>
-                    <Label Content="Ид. Трансформаторы"></Label>
-                </StackPanel>
 
-                <Button x:Name="acceptButton" Content="Ok" IsDefault="True" Width="80" Click="AcceptButton_Click" Margin="0,20,0,0"></Button>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*"></ColumnDefinition>
+                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <Label Grid.Column="0" Content="Число узлов:"></Label>
+                    <TextBox Grid.Column="1" x:Name="m_NV" Width="50" Height="20" Validation.Error="Validation_Error">
+                        <TextBox.Text>
+                            <Binding Path="NV" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay" NotifyOnValidationError="True">
+                                <Binding.ValidationRules>
+                                    <localEx:IsNotNull ValidationStep="RawProposedValue"/>
+                                    <localEx:StringToIntValidationRule ValidationStep="RawProposedValue"/>
+                                    <localEx:ValueLengthShort ValidationStep="RawProposedValue"/>
+                                    <localEx:PositiveNumber ValidationStep="RawProposedValue"/>
+                                </Binding.ValidationRules>
+                            </Binding>
+                        </TextBox.Text>
+                    </TextBox>
+                </Grid>
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*"></ColumnDefinition>
+                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <Label Grid.Column="0" Content="Резисторы:"></Label>
+                    <TextBox Grid.Column="1" x:Name="m_NR" Width="50" Height="20" Validation.Error="Validation_Error">
+                        <TextBox.Text>
+                            <Binding Path="NR" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay" NotifyOnValidationError="True">
+                                <Binding.ValidationRules>
+                                    <localEx:IsNotNull ValidationStep="RawProposedValue"/>
+                                    <localEx:StringToIntValidationRule ValidationStep="RawProposedValue"/>
+                                    <localEx:ValueLengthShort ValidationStep="RawProposedValue"/>
+                                    <localEx:PositiveNumber ValidationStep="RawProposedValue"/>
+                                </Binding.ValidationRules>
+                            </Binding>
+                        </TextBox.Text>
+                    </TextBox>
+                </Grid>
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*"></ColumnDefinition>
+                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <Label Grid.Column="0" Content="Конденсаторы:"></Label>
+                    <TextBox Grid.Column="1" x:Name="m_NC" Width="50" Height="20" Validation.Error="Validation_Error">
+                        <TextBox.Text>
+                            <Binding Path="NC" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay" NotifyOnValidationError="True">
+                                <Binding.ValidationRules>
+                                    <localEx:IsNotNull ValidationStep="RawProposedValue"/>
+                                    <localEx:StringToIntValidationRule ValidationStep="RawProposedValue"/>
+                                    <localEx:ValueLengthShort ValidationStep="RawProposedValue"/>
+                                    <localEx:PositiveNumber ValidationStep="RawProposedValue"/>
+                                </Binding.ValidationRules>
+                            </Binding>
+                        </TextBox.Text>
+                    </TextBox>
+                </Grid>
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*"></ColumnDefinition>
+                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <Label Grid.Column="0" Content="Индуктивности:"></Label>
+                    <TextBox Grid.Column="1" x:Name="m_NL" Width="50" Height="20" Validation.Error="Validation_Error">
+                        <TextBox.Text>
+                            <Binding Path="NL" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay" NotifyOnValidationError="True">
+                                <Binding.ValidationRules>
+                                    <localEx:IsNotNull ValidationStep="RawProposedValue"/>
+                                    <localEx:StringToIntValidationRule ValidationStep="RawProposedValue"/>
+                                    <localEx:ValueLengthShort ValidationStep="RawProposedValue"/>
+                                    <localEx:PositiveNumber ValidationStep="RawProposedValue"/>
+                                </Binding.ValidationRules>
+                            </Binding>
+                        </TextBox.Text>
+                    </TextBox>
+                </Grid>
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*"></ColumnDefinition>
+                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <Label Grid.Column="0" Content="ИТУН:"></Label>
+                    <TextBox Grid.Column="1" Width="50" Height="20" IsEnabled="False"></TextBox>
+                </Grid>
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*"></ColumnDefinition>
+                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <Label Grid.Column="0" Content="ИТУН:"></Label>
+                    <TextBox Grid.Column="1" Width="50" Height="20" IsEnabled="False"></TextBox>
+                </Grid>
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*"></ColumnDefinition>
+                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <Label Grid.Column="0" Content="ИТУН:"></Label>
+                    <TextBox Grid.Column="1" Width="50" Height="20" IsEnabled="False"></TextBox>
+                </Grid>
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*"></ColumnDefinition>
+                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <Label Grid.Column="0" Content="ИТУН:"></Label>
+                    <TextBox Grid.Column="1" Width="50" Height="20" IsEnabled="False"></TextBox>
+                </Grid>
+            </StackPanel>
+            
+            <StackPanel Grid.Column="1">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*"></ColumnDefinition>
+                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <Label Grid.Column="0" Content="Б/П транзисторы:"></Label>
+                    <TextBox Grid.Column="1" x:Name="m_NF" Width="50" Height="20" Validation.Error="Validation_Error">
+                        <TextBox.Text>
+                            <Binding Path="NF" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay" NotifyOnValidationError="True">
+                                <Binding.ValidationRules>
+                                    <localEx:IsNotNull ValidationStep="RawProposedValue"/>
+                                    <localEx:StringToIntValidationRule ValidationStep="RawProposedValue"/>
+                                    <localEx:ValueLengthShort ValidationStep="RawProposedValue"/>
+                                    <localEx:PositiveNumber ValidationStep="RawProposedValue"/>
+                                </Binding.ValidationRules>
+                            </Binding>
+                        </TextBox.Text>
+                    </TextBox>
+                </Grid>
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*"></ColumnDefinition>
+                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <Label Grid.Column="0" Content="У/п транзисторы:"></Label>
+                    <TextBox Grid.Column="1" x:Name="m_LP" Width="50" Height="20" Validation.Error="Validation_Error">
+                        <TextBox.Text>
+                            <Binding Path="LP" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay" NotifyOnValidationError="True">
+                                <Binding.ValidationRules>
+                                    <localEx:IsNotNull ValidationStep="RawProposedValue"/>
+                                    <localEx:StringToIntValidationRule ValidationStep="RawProposedValue"/>
+                                    <localEx:ValueLengthShort ValidationStep="RawProposedValue"/>
+                                    <localEx:PositiveNumber ValidationStep="RawProposedValue"/>
+                                </Binding.ValidationRules>
+                            </Binding>
+                        </TextBox.Text>
+                    </TextBox>
+                </Grid>
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*"></ColumnDefinition>
+                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <Label Grid.Column="0" Content="Опер. усилители:"></Label>
+                    <TextBox Grid.Column="1" x:Name="m_LM" Width="50" Height="20" Validation.Error="Validation_Error">
+                        <TextBox.Text>
+                            <Binding Path="LM" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay" NotifyOnValidationError="True">
+                                <Binding.ValidationRules>
+                                    <localEx:IsNotNull ValidationStep="RawProposedValue"/>
+                                    <localEx:StringToIntValidationRule ValidationStep="RawProposedValue"/>
+                                    <localEx:ValueLengthShort ValidationStep="RawProposedValue"/>
+                                    <localEx:PositiveNumber ValidationStep="RawProposedValue"/>
+                                </Binding.ValidationRules>
+                            </Binding>
+                        </TextBox.Text>
+                    </TextBox>
+                </Grid>
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*"></ColumnDefinition>
+                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <Label Grid.Column="0" Content="Трансформаторы:"></Label>
+                    <TextBox Grid.Column="1" x:Name="m_KP" Width="50" Height="20" Validation.Error="Validation_Error">
+                        <TextBox.Text>
+                            <Binding Path="KP" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay" NotifyOnValidationError="True">
+                                <Binding.ValidationRules>
+                                    <localEx:IsNotNull ValidationStep="RawProposedValue"/>
+                                    <localEx:StringToIntValidationRule ValidationStep="RawProposedValue"/>
+                                    <localEx:ValueLengthShort ValidationStep="RawProposedValue"/>
+                                    <localEx:PositiveNumber ValidationStep="RawProposedValue"/>
+                                </Binding.ValidationRules>
+                            </Binding>
+                        </TextBox.Text>
+                    </TextBox>
+                </Grid>
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*"></ColumnDefinition>
+                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <Label Grid.Column="0" Content="Ид. опер. усилители:"></Label>
+                    <TextBox Grid.Column="1" x:Name="m_KM" Width="50" Height="20" Validation.Error="Validation_Error">
+                        <TextBox.Text>
+                            <Binding Path="KM" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay" NotifyOnValidationError="True">
+                                <Binding.ValidationRules>
+                                    <localEx:IsNotNull ValidationStep="RawProposedValue"/>
+                                    <localEx:StringToIntValidationRule ValidationStep="RawProposedValue"/>
+                                    <localEx:ValueLengthShort ValidationStep="RawProposedValue"/>
+                                    <localEx:PositiveNumber ValidationStep="RawProposedValue"/>
+                                </Binding.ValidationRules>
+                            </Binding>
+                        </TextBox.Text>
+                    </TextBox>
+                </Grid>
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*"></ColumnDefinition>
+                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <Label Grid.Column="0" Content="Ид. Трансформаторы:"></Label>
+                    <TextBox Grid.Column="1" x:Name="m_K" Width="50" Height="20" Validation.Error="Validation_Error">
+                        <TextBox.Text>
+                            <Binding Path="K" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay" NotifyOnValidationError="True">
+                                <Binding.ValidationRules>
+                                    <localEx:IsNotNull ValidationStep="RawProposedValue"/>
+                                    <localEx:StringToIntValidationRule ValidationStep="RawProposedValue"/>
+                                    <localEx:ValueLengthShort ValidationStep="RawProposedValue"/>
+                                    <localEx:PositiveNumber ValidationStep="RawProposedValue"/>
+                                </Binding.ValidationRules>
+                            </Binding>
+                        </TextBox.Text>
+                    </TextBox>
+                </Grid>
+                
+                <Button x:Name="acceptButton" Content="Ok" Width="80" Margin="0,20,0,0" Click="AcceptButton_Click"/>
             </StackPanel>
         </Grid>
     </Grid>    

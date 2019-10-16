@@ -3,11 +3,35 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:localEx="clr-namespace:BD.Exeption"
       xmlns:local="clr-namespace:BD"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Page3">
 
+    <Page.Resources>
+        <Style TargetType="{x:Type TextBox}">
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="Margin" Value="0,2,30,2" />
+            <Setter Property="Validation.ErrorTemplate">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <DockPanel LastChildFill="true">
+                            <Border Background="Red" DockPanel.Dock="right" Margin="5,0,0,0" Width="20" Height="20" CornerRadius="10"
+                                    ToolTip="{Binding ElementName=customAdorner, Path=AdornedElement.(Validation.Errors)[0].ErrorContent}">
+                                <TextBlock Text="!" VerticalAlignment="center" HorizontalAlignment="center" FontWeight="Bold" Foreground="white">
+                                </TextBlock>
+                            </Border>
+                            <AdornedElementPlaceholder Name="customAdorner" VerticalAlignment="Center" >
+                                <Border BorderBrush="red" BorderThickness="1" />
+                            </AdornedElementPlaceholder>
+                        </DockPanel>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Page.Resources>
+    
     <Grid>
         <Label Content="Описание R"></Label>
         <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
@@ -24,15 +48,74 @@
                 <ColumnDefinition Width="0.5*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
 
-            <Label Grid.Column="0" Grid.Row="0" Content="Резистор R"></Label>
+            <Label Grid.Column="0" Grid.Row="0">
+                <Label.Content>
+                    <Binding Path="Name"  UpdateSourceTrigger="PropertyChanged"/>
+                </Label.Content>
+            </Label>
             <Label Grid.Column="0" Grid.Row="1" Content="Узел n+"></Label>
             <Label Grid.Column="0" Grid.Row="2" Content="Узел n-"></Label>
-            <Label Grid.Column="0" Grid.Row="3" Content="Сопротивление (КОм)"></Label>
+            <Label Grid.Column="0" Grid.Row="3">
+                <Label.Content>
+                    <Binding Path="Unit"  UpdateSourceTrigger="PropertyChanged"/>
+                </Label.Content>
+            </Label>
 
-            <TextBox Grid.Column="2" Grid.Row="0" Text="0" Width="80" Height="20"></TextBox>
-            <TextBox Grid.Column="2" Grid.Row="1" Text="0" Width="80" Height="20"></TextBox>
-            <TextBox Grid.Column="2" Grid.Row="2" Text="0" Width="80" Height="20"></TextBox>
-            <TextBox Grid.Column="2" Grid.Row="3" Text="0" Width="80" Height="20"></TextBox>
+            <TextBox x:Name="m_nextr"  Grid.Column="2" Grid.Row="0" Width="80" Height="20" 
+                     Validation.Error="Validation_Error" IsEnabled="False">
+                <TextBox.Text>
+                    <Binding Path="CurNum" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay" NotifyOnValidationError="True">
+                        <Binding.ValidationRules>
+                            <localEx:IsNotNull ValidationStep="RawProposedValue"/>
+                            <localEx:StringToIntValidationRule ValidationStep="RawProposedValue"/>
+                            <localEx:ValueLengthShort ValidationStep="RawProposedValue"/>
+                            <localEx:PositiveNumber ValidationStep="RawProposedValue"/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+            
+            <TextBox x:Name="m_npr" Grid.Column="2" Grid.Row="1" Width="80" Height="20" 
+                     Validation.Error="Validation_Error">
+                <TextBox.Text>
+                    <Binding Path="N_plus" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay" NotifyOnValidationError="True">
+                        <Binding.ValidationRules>
+                            <localEx:IsNotNull ValidationStep="RawProposedValue"/>
+                            <localEx:StringToIntValidationRule ValidationStep="RawProposedValue"/>
+                            <localEx:ValueLengthShort ValidationStep="RawProposedValue"/>
+                            <localEx:PositiveNumber ValidationStep="RawProposedValue"/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+            
+            <TextBox x:Name="m_nmr" Grid.Column="2" Grid.Row="2" Width="80" Height="20" 
+                     Validation.Error="Validation_Error">
+                <TextBox.Text>
+                    <Binding Path="N_minus" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay" NotifyOnValidationError="True">
+                        <Binding.ValidationRules>
+                            <localEx:IsNotNull ValidationStep="RawProposedValue"/>
+                            <localEx:StringToIntValidationRule ValidationStep="RawProposedValue"/>
+                            <localEx:ValueLengthShort ValidationStep="RawProposedValue"/>
+                            <localEx:PositiveNumber ValidationStep="RawProposedValue"/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+            
+            <TextBox x:Name="m_zr" Grid.Column="2" Grid.Row="3" Width="80" Height="20" 
+                     Validation.Error="Validation_Error">
+                <TextBox.Text>
+                    <Binding Path="Z" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay" NotifyOnValidationError="True">
+                        <Binding.ValidationRules>
+                            <localEx:IsNotNull ValidationStep="RawProposedValue"/>
+                            <localEx:StringToIntValidationRule ValidationStep="RawProposedValue"/> 
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+            
+            
 
             <Button Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="3" x:Name="acceptButton" Content="Ok" IsDefault="True" Width="80" Click="AcceptButton_Click" Margin="0,20,0,0"></Button>
         </Grid>
