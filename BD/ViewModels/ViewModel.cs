@@ -9,17 +9,46 @@ namespace BD.ViewModels
 {
     class ViewModel
     {
-        public static int NV { get; set; } = 0;     //Число узлов
-        public static int NR { get; set; } = 0;     //Резисторы
-        public static int NC { get; set; } = 0;     //Конденсаторы
-        public static int NL { get; set; } = 0;     //Индуктивности
-        public static int NF { get; set; } = 0;     //Б/П транзистор
-        public static int LP { get; set; } = 0;     //У/п транзистор
-        public static int LM { get; set; } = 0;     //Опер. усилители
-        public static int KP { get; set; } = 0;     //Трансформаторы
-        public static int KM { get; set; } = 0;     //Ид. опер. Усилители
-        public static int K { get; set; } = 0;      //Ид. трансформаторы
-
+        /// <summary>
+        /// Число узлов
+        /// </summary>
+        public static int NV { get; set; } = 0;
+        /// <summary>
+        /// Кол-во резисторов
+        /// </summary>
+        public static int NR { get; set; } = 0;
+        /// <summary>
+        /// Кол-во  конденсаторов
+        /// </summary>
+        public static int NC { get; set; } = 0;
+        /// <summary>
+        /// Кол-во индуктивностей
+        /// </summary>
+        public static int NL { get; set; } = 0;
+        /// <summary>
+        /// Кол-во Б/П транзисторов
+        /// </summary>
+        public static int NF { get; set; } = 0;
+        /// <summary>
+        /// У/п транзистор
+        /// </summary>
+        public static int LP { get; set; } = 0;
+        /// <summary>
+        /// Кол-во опер. усилителей
+        /// </summary>
+        public static int LM { get; set; } = 0;
+        /// <summary>
+        /// Кол-во трансформаторов
+        /// </summary>
+        public static int KP { get; set; } = 0;
+        /// <summary>
+        /// Кол-во ид. опер. исилителей
+        /// </summary>
+        public static int KM { get; set; } = 0;
+        /// <summary>
+        /// Кол-во ид. трансформаторов
+        /// </summary>
+        public static int K { get; set; } = 0;   
         public static List<R> listR { get; set; }
         public static List<C> listC { get; set; }
         public static List<L> listL { get; set; }
