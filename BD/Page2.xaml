@@ -49,7 +49,7 @@
                     </Grid.ColumnDefinitions>
 
                     <Label Grid.Column="0" Content="Число узлов:"></Label>
-                    <TextBox Grid.Column="1" x:Name="m_NV" Width="50" Height="20" Validation.Error="Validation_Error">
+                    <TextBox Grid.Column="1" x:Name="m_NV" Width="35" Height="20" Validation.Error="Validation_Error">
                         <TextBox.Text>
                             <Binding Path="NV" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay" NotifyOnValidationError="True">
                                 <Binding.ValidationRules>
@@ -70,7 +70,7 @@
                     </Grid.ColumnDefinitions>
 
                     <Label Grid.Column="0" Content="Резисторы:"></Label>
-                    <TextBox Grid.Column="1" x:Name="m_NR" Width="50" Height="20" Validation.Error="Validation_Error">
+                    <TextBox Grid.Column="1" x:Name="m_NR" Width="35" Height="20" Validation.Error="Validation_Error">
                         <TextBox.Text>
                             <Binding Path="NR" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay" NotifyOnValidationError="True">
                                 <Binding.ValidationRules>
@@ -91,7 +91,7 @@
                     </Grid.ColumnDefinitions>
 
                     <Label Grid.Column="0" Content="Конденсаторы:"></Label>
-                    <TextBox Grid.Column="1" x:Name="m_NC" Width="50" Height="20" Validation.Error="Validation_Error">
+                    <TextBox Grid.Column="1" x:Name="m_NC" Width="35" Height="20" Validation.Error="Validation_Error">
                         <TextBox.Text>
                             <Binding Path="NC" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay" NotifyOnValidationError="True">
                                 <Binding.ValidationRules>
@@ -112,7 +112,7 @@
                     </Grid.ColumnDefinitions>
 
                     <Label Grid.Column="0" Content="Индуктивности:"></Label>
-                    <TextBox Grid.Column="1" x:Name="m_NL" Width="50" Height="20" Validation.Error="Validation_Error">
+                    <TextBox Grid.Column="1" x:Name="m_NL" Width="35" Height="20" Validation.Error="Validation_Error">
                         <TextBox.Text>
                             <Binding Path="NL" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay" NotifyOnValidationError="True">
                                 <Binding.ValidationRules>
@@ -133,7 +133,7 @@
                     </Grid.ColumnDefinitions>
 
                     <Label Grid.Column="0" Content="ИТУН:"></Label>
-                    <TextBox Grid.Column="1" Width="50" Height="20" IsEnabled="False"></TextBox>
+                    <TextBox Grid.Column="1" Width="35" Height="20" IsEnabled="False"></TextBox>
                 </Grid>
 
                 <Grid>
@@ -143,7 +143,7 @@
                     </Grid.ColumnDefinitions>
 
                     <Label Grid.Column="0" Content="ИТУН:"></Label>
-                    <TextBox Grid.Column="1" Width="50" Height="20" IsEnabled="False"></TextBox>
+                    <TextBox Grid.Column="1" Width="35" Height="20" IsEnabled="False"></TextBox>
                 </Grid>
 
                 <Grid>
@@ -153,7 +153,7 @@
                     </Grid.ColumnDefinitions>
 
                     <Label Grid.Column="0" Content="ИТУН:"></Label>
-                    <TextBox Grid.Column="1" Width="50" Height="20" IsEnabled="False"></TextBox>
+                    <TextBox Grid.Column="1" Width="35" Height="20" IsEnabled="False"></TextBox>
                 </Grid>
 
                 <Grid>
@@ -163,7 +163,7 @@
                     </Grid.ColumnDefinitions>
 
                     <Label Grid.Column="0" Content="ИТУН:"></Label>
-                    <TextBox Grid.Column="1" Width="50" Height="20" IsEnabled="False"></TextBox>
+                    <TextBox Grid.Column="1" Width="35" Height="20" IsEnabled="False"></TextBox>
                 </Grid>
             </StackPanel>
             
@@ -175,7 +175,7 @@
                     </Grid.ColumnDefinitions>
 
                     <Label Grid.Column="0" Content="Б/П транзисторы:"></Label>
-                    <TextBox Grid.Column="1" x:Name="m_NF" Width="50" Height="20" Validation.Error="Validation_Error">
+                    <TextBox Grid.Column="1" x:Name="m_NF" Width="35" Height="20" Validation.Error="Validation_Error">
                         <TextBox.Text>
                             <Binding Path="NF" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay" NotifyOnValidationError="True">
                                 <Binding.ValidationRules>
@@ -196,7 +196,7 @@
                     </Grid.ColumnDefinitions>
 
                     <Label Grid.Column="0" Content="У/п транзисторы:"></Label>
-                    <TextBox Grid.Column="1" x:Name="m_LP" Width="50" Height="20" Validation.Error="Validation_Error">
+                    <TextBox Grid.Column="1" x:Name="m_LP" Width="35" Height="20" Validation.Error="Validation_Error">
                         <TextBox.Text>
                             <Binding Path="LP" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay" NotifyOnValidationError="True">
                                 <Binding.ValidationRules>
@@ -217,7 +217,7 @@
                     </Grid.ColumnDefinitions>
 
                     <Label Grid.Column="0" Content="Опер. усилители:"></Label>
-                    <TextBox Grid.Column="1" x:Name="m_LM" Width="50" Height="20" Validation.Error="Validation_Error">
+                    <TextBox Grid.Column="1" x:Name="m_LM" Width="35" Height="20" Validation.Error="Validation_Error">
                         <TextBox.Text>
                             <Binding Path="LM" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay" NotifyOnValidationError="True">
                                 <Binding.ValidationRules>
@@ -238,7 +238,7 @@
                     </Grid.ColumnDefinitions>
 
                     <Label Grid.Column="0" Content="Трансформаторы:"></Label>
-                    <TextBox Grid.Column="1" x:Name="m_KP" Width="50" Height="20" Validation.Error="Validation_Error">
+                    <TextBox Grid.Column="1" x:Name="m_KP" Width="35" Height="20" Validation.Error="Validation_Error">
                         <TextBox.Text>
                             <Binding Path="KP" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay" NotifyOnValidationError="True">
                                 <Binding.ValidationRules>
@@ -259,7 +259,7 @@
                     </Grid.ColumnDefinitions>
 
                     <Label Grid.Column="0" Content="Ид. опер. усилители:"></Label>
-                    <TextBox Grid.Column="1" x:Name="m_KM" Width="50" Height="20" Validation.Error="Validation_Error">
+                    <TextBox Grid.Column="1" x:Name="m_KM" Width="35" Height="20" Validation.Error="Validation_Error">
                         <TextBox.Text>
                             <Binding Path="KM" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay" NotifyOnValidationError="True">
                                 <Binding.ValidationRules>
@@ -280,7 +280,7 @@
                     </Grid.ColumnDefinitions>
 
                     <Label Grid.Column="0" Content="Ид. Трансформаторы:"></Label>
-                    <TextBox Grid.Column="1" x:Name="m_K" Width="50" Height="20" Validation.Error="Validation_Error">
+                    <TextBox Grid.Column="1" x:Name="m_K" Width="35" Height="20" Validation.Error="Validation_Error">
                         <TextBox.Text>
                             <Binding Path="K" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay" NotifyOnValidationError="True">
                                 <Binding.ValidationRules>

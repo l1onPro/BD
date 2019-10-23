@@ -73,7 +73,8 @@ namespace BD
 
         private void btnEdit_Click(object sender, RoutedEventArgs e)
         {
-
+            Page6 p6 = new Page6(mainWindowFrame);
+            mainWindowFrame.Navigate(p6);
         }
 
         private void MIOpenFile_Click(object sender, RoutedEventArgs e)

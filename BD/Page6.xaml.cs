@@ -14,15 +14,31 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace BD
-{
+{   
     /// <summary>
     /// Логика взаимодействия для Page6.xaml
     /// </summary>
     public partial class Page6 : Page
     {
-        public Page6()
+        private int _noOfErrorsOnScreen = 0;
+        Frame frame;
+        public Page6(Frame _frame)
         {
             InitializeComponent();
+            frame = _frame;
+            acceptButton.IsEnabled = _noOfErrorsOnScreen == 0;
         }
-    }
+        private void acceptButton_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
+        private void Validation_Error(object sender, ValidationErrorEventArgs e)
+        {
+            if (e.Action == ValidationErrorEventAction.Added)
+                _noOfErrorsOnScreen++;
+            else
+                _noOfErrorsOnScreen--;
+            acceptButton.IsEnabled = _noOfErrorsOnScreen == 0;
+        }
+    }    
 }

@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:BD"
         
         mc:Ignorable="d"
-        Title="Непрерывные сети" Height="450" Width="600" Closing="Window_Closing">
+        Title="Непрерывные сети" Height="600" Width="800" MinHeight="600" MinWidth="800" MaxHeight="600" MaxWidth="800" Closing="Window_Closing">
     <Grid x:Name="MainCanvas">
         <Grid.RowDefinitions>
             <RowDefinition Height="30"></RowDefinition>
