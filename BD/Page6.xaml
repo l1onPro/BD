@@ -38,12 +38,12 @@
         <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>               
+                <ColumnDefinition Width="400"></ColumnDefinition>               
             </Grid.ColumnDefinitions>
 
             <StackPanel Grid.Column="0">
                 <Label Content="Тип компонента"></Label>
-                <ListBox Height="210"></ListBox>
+                <ListBox Height="210" x:Name="listBoxEl" SelectionChanged="listBoxEl_SelectionChanged"></ListBox>
             </StackPanel>
 
             <StackPanel Grid.Column="1">
@@ -58,22 +58,18 @@
                     </Grid.ColumnDefinitions>
 
                     <Label Grid.Row="0" Grid.Column="0" HorizontalAlignment="Right"  Content="Номер компонента"></Label>
-                    <TextBox Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" Width="50" Height="20" IsReadOnly="True" IsEnabled="False">
-                        <TextBox.Text>
-                            <Binding Path="CurNum" UpdateSourceTrigger="PropertyChanged" NotifyOnValidationError="True">                                
-                            </Binding>
-                        </TextBox.Text>
-                    </TextBox>
+                    <ComboBox Grid.Row="0" Grid.Column="1" x:Name="m_num" HorizontalAlignment="Left" Width="50" Height="20" SelectionChanged="m_num_SelectionChanged">
+                    </ComboBox> 
 
                     <StackPanel Grid.Row="1" Grid.Column="0">
                         <Grid>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition Width="120"></ColumnDefinition>
                                 <ColumnDefinition></ColumnDefinition>
                             </Grid.ColumnDefinitions>
 
                             <Label Grid.Column="0" Content="Значение"></Label>
-                            <TextBox Grid.Column="1" x:Name="m_NV" Width="40" Height="20" Validation.Error="Validation_Error">
+                            <TextBox Grid.Column="1" x:Name="m_np1" Width="40" Height="20" HorizontalAlignment="Right" Validation.Error="Validation_Error">
                                 <TextBox.Text>
                                     <Binding Path="NV" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay" NotifyOnValidationError="True">
                                         <Binding.ValidationRules>
@@ -89,12 +85,12 @@
 
                         <Grid>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition Width="120"></ColumnDefinition>
                                 <ColumnDefinition></ColumnDefinition>
                             </Grid.ColumnDefinitions>
 
                             <Label Grid.Column="0" Content="Значение"></Label>
-                            <TextBox Grid.Column="1" x:Name="name2" Width="40" Height="20" Validation.Error="Validation_Error">
+                            <TextBox Grid.Column="1" x:Name="m_nm1" Width="40" Height="20" HorizontalAlignment="Right" Validation.Error="Validation_Error">
                                 <TextBox.Text>
                                     <Binding Path="NV" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay" NotifyOnValidationError="True">
                                         <Binding.ValidationRules>
@@ -109,15 +105,82 @@
                         </Grid>
                     </StackPanel>
 
-                    <StackPanel Grid.Row="1" Grid.Column="1">
+                    <StackPanel Grid.Row="1" Grid.Column="1" Width="230">
                         <Grid>
                             <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="150"></ColumnDefinition>
                                 <ColumnDefinition></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+
+                            <Label Grid.Column="0" Content="Узел n+"></Label>
+                            <TextBox Grid.Column="1" x:Name="m_np2" Width="40" Height="20" HorizontalAlignment="Right" Validation.Error="Validation_Error">
+                                <TextBox.Text>
+                                    <Binding Path="N_plus" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay" NotifyOnValidationError="True">
+                                        <Binding.ValidationRules>
+                                            <localEx:IsNotNull ValidationStep="RawProposedValue"/>
+                                            <localEx:StringToIntValidationRule ValidationStep="RawProposedValue"/>
+                                            <localEx:ValueLengthShort ValidationStep="RawProposedValue"/>
+                                            <localEx:PositiveNumber ValidationStep="RawProposedValue"/>
+                                        </Binding.ValidationRules>
+                                    </Binding>
+                                </TextBox.Text>
+                            </TextBox>
+                        </Grid>
+
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="150"></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+
+                            <Label Grid.Column="0" Content="Узел n-"></Label>
+                            <TextBox Grid.Column="1" x:Name="m_nm2" Width="40" Height="20" HorizontalAlignment="Right" Validation.Error="Validation_Error">
+                                <TextBox.Text>
+                                    <Binding Path="N_minus" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay" NotifyOnValidationError="True">
+                                        <Binding.ValidationRules>
+                                            <localEx:IsNotNull ValidationStep="RawProposedValue"/>
+                                            <localEx:StringToIntValidationRule ValidationStep="RawProposedValue"/>
+                                            <localEx:ValueLengthShort ValidationStep="RawProposedValue"/>
+                                            <localEx:PositiveNumber ValidationStep="RawProposedValue"/>
+                                        </Binding.ValidationRules>
+                                    </Binding>
+                                </TextBox.Text>
+                            </TextBox>
+                        </Grid>
+
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="150"></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+
+                            <Label Grid.Column="0">
+                                <Label.Content>
+                                    <Binding Path="Unit"  UpdateSourceTrigger="PropertyChanged"/>
+                                </Label.Content>
+                            </Label>
+                            <TextBox Grid.Column="1" x:Name="m_z1" Width="40" Height="20"  HorizontalAlignment="Right" Validation.Error="Validation_Error">
+                                <TextBox.Text>
+                                    <Binding Path="Z" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay" NotifyOnValidationError="True">
+                                        <Binding.ValidationRules>
+                                            <localEx:IsNotNull ValidationStep="RawProposedValue"/>
+                                            <localEx:StringToIntValidationRule ValidationStep="RawProposedValue"/>
+                                            <localEx:ValueLengthShort ValidationStep="RawProposedValue"/>
+                                            <localEx:PositiveNumber ValidationStep="RawProposedValue"/>
+                                        </Binding.ValidationRules>
+                                    </Binding>
+                                </TextBox.Text>
+                            </TextBox>
+                        </Grid>
+
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="150"></ColumnDefinition>
                                 <ColumnDefinition></ColumnDefinition>
                             </Grid.ColumnDefinitions>
 
                             <Label Grid.Column="0" Content="Значение"></Label>
-                            <TextBox Grid.Column="1" x:Name="n2" Width="40" Height="20" Validation.Error="Validation_Error">
+                            <TextBox Grid.Column="1" x:Name="m_z2" Width="40" Height="20"  HorizontalAlignment="Right" Validation.Error="Validation_Error">
                                 <TextBox.Text>
                                     <Binding Path="NV" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay" NotifyOnValidationError="True">
                                         <Binding.ValidationRules>
@@ -133,12 +196,12 @@
 
                         <Grid>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition Width="150"></ColumnDefinition>
                                 <ColumnDefinition></ColumnDefinition>
                             </Grid.ColumnDefinitions>
 
                             <Label Grid.Column="0" Content="Значение"></Label>
-                            <TextBox Grid.Column="1" x:Name="n3" Width="40" Height="20" Validation.Error="Validation_Error">
+                            <TextBox Grid.Column="1" x:Name="m_z3" Width="40" Height="20"  HorizontalAlignment="Right" Validation.Error="Validation_Error">
                                 <TextBox.Text>
                                     <Binding Path="NV" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay" NotifyOnValidationError="True">
                                         <Binding.ValidationRules>
@@ -154,96 +217,12 @@
 
                         <Grid>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition></ColumnDefinition>
-                                <ColumnDefinition></ColumnDefinition>
-                            </Grid.ColumnDefinitions>
-
-                            <Label Grid.Column="0" Content="Значение"></Label>
-                            <TextBox Grid.Column="1" x:Name="n44" Width="40" Height="20" Validation.Error="Validation_Error">
-                                <TextBox.Text>
-                                    <Binding Path="NV" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay" NotifyOnValidationError="True">
-                                        <Binding.ValidationRules>
-                                            <localEx:IsNotNull ValidationStep="RawProposedValue"/>
-                                            <localEx:StringToIntValidationRule ValidationStep="RawProposedValue"/>
-                                            <localEx:ValueLengthShort ValidationStep="RawProposedValue"/>
-                                            <localEx:PositiveNumber ValidationStep="RawProposedValue"/>
-                                        </Binding.ValidationRules>
-                                    </Binding>
-                                </TextBox.Text>
-                            </TextBox>
-                        </Grid>
-
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition></ColumnDefinition>
-                                <ColumnDefinition></ColumnDefinition>
-                            </Grid.ColumnDefinitions>
-
-                            <Label Grid.Column="0" Content="Значение"></Label>
-                            <TextBox Grid.Column="1" x:Name="n4" Width="40" Height="20" Validation.Error="Validation_Error">
-                                <TextBox.Text>
-                                    <Binding Path="NV" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay" NotifyOnValidationError="True">
-                                        <Binding.ValidationRules>
-                                            <localEx:IsNotNull ValidationStep="RawProposedValue"/>
-                                            <localEx:StringToIntValidationRule ValidationStep="RawProposedValue"/>
-                                            <localEx:ValueLengthShort ValidationStep="RawProposedValue"/>
-                                            <localEx:PositiveNumber ValidationStep="RawProposedValue"/>
-                                        </Binding.ValidationRules>
-                                    </Binding>
-                                </TextBox.Text>
-                            </TextBox>
-                        </Grid>
-
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition></ColumnDefinition>
-                                <ColumnDefinition></ColumnDefinition>
-                            </Grid.ColumnDefinitions>
-
-                            <Label Grid.Column="0" Content="Значение"></Label>
-                            <TextBox Grid.Column="1" x:Name="n5" Width="40" Height="20" Validation.Error="Validation_Error">
-                                <TextBox.Text>
-                                    <Binding Path="NV" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay" NotifyOnValidationError="True">
-                                        <Binding.ValidationRules>
-                                            <localEx:IsNotNull ValidationStep="RawProposedValue"/>
-                                            <localEx:StringToIntValidationRule ValidationStep="RawProposedValue"/>
-                                            <localEx:ValueLengthShort ValidationStep="RawProposedValue"/>
-                                            <localEx:PositiveNumber ValidationStep="RawProposedValue"/>
-                                        </Binding.ValidationRules>
-                                    </Binding>
-                                </TextBox.Text>
-                            </TextBox>
-                        </Grid>
-
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition></ColumnDefinition>
-                                <ColumnDefinition></ColumnDefinition>
-                            </Grid.ColumnDefinitions>
-
-                            <Label Grid.Column="0" Content="Значение"></Label>
-                            <TextBox Grid.Column="1" x:Name="n6" Width="40" Height="20" Validation.Error="Validation_Error">
-                                <TextBox.Text>
-                                    <Binding Path="NV" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay" NotifyOnValidationError="True">
-                                        <Binding.ValidationRules>
-                                            <localEx:IsNotNull ValidationStep="RawProposedValue"/>
-                                            <localEx:StringToIntValidationRule ValidationStep="RawProposedValue"/>
-                                            <localEx:ValueLengthShort ValidationStep="RawProposedValue"/>
-                                            <localEx:PositiveNumber ValidationStep="RawProposedValue"/>
-                                        </Binding.ValidationRules>
-                                    </Binding>
-                                </TextBox.Text>
-                            </TextBox>
-                        </Grid>
-
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition Width="150"></ColumnDefinition>
                                 <ColumnDefinition></ColumnDefinition>
                             </Grid.ColumnDefinitions>
                             
                             <Label Grid.Column="0" Content="Значение"></Label>
-                            <TextBox Grid.Column="1" x:Name="n7" Width="40" Height="20" Validation.Error="Validation_Error">
+                            <TextBox Grid.Column="1" x:Name="m_z4" Width="40" Height="20"  HorizontalAlignment="Right" Validation.Error="Validation_Error">
                                 <TextBox.Text>
                                     <Binding Path="NV" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay" NotifyOnValidationError="True">
                                         <Binding.ValidationRules>
@@ -259,12 +238,33 @@
 
                         <Grid>
                             <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="150"></ColumnDefinition>
                                 <ColumnDefinition></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            
+                            <Label Grid.Column="0" Content="Значение"></Label>
+                            <TextBox Grid.Column="1" x:Name="m_z5" Width="40" Height="20"  HorizontalAlignment="Right" Validation.Error="Validation_Error">
+                                <TextBox.Text>
+                                    <Binding Path="NV" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay" NotifyOnValidationError="True">
+                                        <Binding.ValidationRules>
+                                            <localEx:IsNotNull ValidationStep="RawProposedValue"/>
+                                            <localEx:StringToIntValidationRule ValidationStep="RawProposedValue"/>
+                                            <localEx:ValueLengthShort ValidationStep="RawProposedValue"/>
+                                            <localEx:PositiveNumber ValidationStep="RawProposedValue"/>
+                                        </Binding.ValidationRules>
+                                    </Binding>
+                                </TextBox.Text>
+                            </TextBox>
+                        </Grid>
+
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="150"></ColumnDefinition>
                                 <ColumnDefinition></ColumnDefinition>
                             </Grid.ColumnDefinitions>
 
                             <Label Grid.Column="0" Content="Значение"></Label>
-                            <TextBox Grid.Column="1" x:Name="n8" Width="40" Height="20" Validation.Error="Validation_Error">
+                            <TextBox Grid.Column="1" x:Name="m_z6" Width="40" Height="20"  HorizontalAlignment="Right" Validation.Error="Validation_Error">
                                 <TextBox.Text>
                                     <Binding Path="NV" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay" NotifyOnValidationError="True">
                                         <Binding.ValidationRules>

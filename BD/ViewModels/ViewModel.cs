@@ -71,5 +71,13 @@ namespace BD.ViewModels
 
             return false;
         }
+        public static bool IsNotNullListsEl()
+        {
+            if (NR > 0 && listR == null) return false;
+            if (NC > 0 && listC == null) return false;
+            if (NL > 0 && listL == null) return false;
+
+            return true;
+        }
     }
 }
