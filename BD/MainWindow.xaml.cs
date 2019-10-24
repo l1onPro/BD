@@ -80,7 +80,8 @@ namespace BD
 
         private void MIOpenFile_Click(object sender, RoutedEventArgs e)
         {
-            
+            Page7 p7 = new Page7(mainWindowFrame);
+            mainWindowFrame.Navigate(p7);
         }
 
         private void MIInpOutNodes_Click(object sender, RoutedEventArgs e)

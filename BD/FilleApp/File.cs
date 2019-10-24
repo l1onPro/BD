@@ -37,92 +37,102 @@ namespace BD.FilleApp
         }
         public static bool InputFromFile(string fileName)
         {
-            StreamReader stream = new StreamReader(fileName);
-            char[] sep = {' '};
-            string str = "";
-            str = stream.ReadLine();
-            string[] s = str.Split(sep, 4);
-
-            bool check = CheckTryParse(s);
-
-            if (check)
+            try
             {
-                ViewModel.NV = Int32.Parse(s[0]);
-                ViewModel.NR = Int32.Parse(s[1]);
-                ViewModel.NC = Int32.Parse(s[2]);
-                ViewModel.NL = Int32.Parse(s[3]);
-            }
-            else
-            {
+                StreamReader stream = new StreamReader(fileName);
+                char[] sep = { ' ' };
+                string str = "";
+                str = stream.ReadLine();
+                string[] s = str.Split(sep, 4);
+
+                bool check = CheckTryParse(s);
+
+                if (check)
+                {
+                    ViewModel.NV = Int32.Parse(s[0]);
+                    ViewModel.NR = Int32.Parse(s[1]);
+                    ViewModel.NC = Int32.Parse(s[2]);
+                    ViewModel.NL = Int32.Parse(s[3]);
+
+                    ViewModel.listR = new List<R>();
+                    ViewModel.listC= new List<C>();
+                    ViewModel.listL = new List<L>();
+                }
+                else
+                {
+                    stream.Close();
+                    return false;
+                }
+
+                for (int i = 0; i < ViewModel.NR; i++)
+                {
+                    str = stream.ReadLine();
+                    s = str.Split(sep, 3);
+                    check = CheckTryParse(s);
+
+                    if (check)
+                    {
+                        R newR = new R(i);
+                        newR.N_plus = Int32.Parse(s[0]);
+                        newR.N_minus = Int32.Parse(s[1]);
+                        newR.Z = Int32.Parse(s[2]);
+                        ViewModel.listR.Add(newR);
+                    }
+                    else
+                    {
+                        stream.Close();
+                        return false;
+                    }
+                }
+
+                for (int i = 0; i < ViewModel.NC; i++)
+                {
+                    str = stream.ReadLine();
+                    s = str.Split(sep, 3);
+                    check = CheckTryParse(s);
+
+                    if (check)
+                    {
+                        C newC = new C(i);
+                        newC.N_plus = Int32.Parse(s[0]);
+                        newC.N_minus = Int32.Parse(s[1]);
+                        newC.Z = Int32.Parse(s[2]);
+                        ViewModel.listC.Add(newC);
+                    }
+                    else
+                    {
+                        stream.Close();
+                        return false;
+                    }
+                }
+
+                for (int i = 0; i < ViewModel.NL; i++)
+                {
+                    str = stream.ReadLine();
+                    s = str.Split(sep, 3);
+                    check = CheckTryParse(s);
+
+                    if (check)
+                    {
+                        L newL = new L(i);
+                        newL.N_plus = Int32.Parse(s[0]);
+                        newL.N_minus = Int32.Parse(s[1]);
+                        newL.Z = Int32.Parse(s[2]);
+                        ViewModel.listL.Add(newL);
+                    }
+                    else
+                    {
+                        stream.Close();
+                        return false;
+                    }
+                }
                 stream.Close();
+                return true;
+            }
+            catch (Exception)
+            {
                 return false;
-            }
-
-            for (int i = 0; i < ViewModel.NR; i++)
-            {
-                str = stream.ReadLine();
-                s = str.Split(sep, 3);
-                check = CheckTryParse(s);
-
-                if (check)
-                {
-                    R newR = new R(i);
-                    newR.N_plus = Int32.Parse(s[0]);
-                    newR.N_minus = Int32.Parse(s[1]);
-                    newR.Z = Int32.Parse(s[2]);
-                    ViewModel.listR.Add(newR);
-                }
-                else
-                {
-                    stream.Close();
-                    return false;
-                }
-            }
-
-            for (int i = 0; i < ViewModel.NC; i++)
-            {
-                str = stream.ReadLine();
-                s = str.Split(sep, 3);
-                check = CheckTryParse(s);
-
-                if (check)
-                {
-                    C newC = new C(i);
-                    newC.N_plus = Int32.Parse(s[0]);
-                    newC.N_minus = Int32.Parse(s[1]);
-                    newC.Z = Int32.Parse(s[2]);
-                    ViewModel.listC.Add(newC);
-                }
-                else
-                {
-                    stream.Close();
-                    return false;
-                }
-            }
-
-            for (int i = 0; i < ViewModel.NL; i++)
-            {
-                str = stream.ReadLine();
-                s = str.Split(sep, 3);
-                check = CheckTryParse(s);
-
-                if (check)
-                {
-                    L newL = new L(i);
-                    newL.N_plus = Int32.Parse(s[0]);
-                    newL.N_minus = Int32.Parse(s[1]);
-                    newL.Z = Int32.Parse(s[2]);
-                    ViewModel.listL.Add(newL);
-                }
-                else
-                {
-                    stream.Close();
-                    return false;
-                }
-            }
-
-            stream.Close();
-            return true;
+            }  
         }
 
         private static string ConvertToStringViewModel()
