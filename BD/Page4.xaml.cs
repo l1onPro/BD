@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BD.FilleApp;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -29,8 +30,16 @@ namespace BD
 
         private void AcceptButton_Click(object sender, RoutedEventArgs e)
         {
+            if (checkFile.IsChecked == true)
+            {
+                SaveToFile();
+            }
             Page5 p5 = new Page5(frame);
             frame.Navigate(p5);
+        }
+        private void SaveToFile()
+        {
+            File.OutToFile(txtNameFile.Text + ".txt");
         }
     }
 }
