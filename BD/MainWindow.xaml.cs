@@ -86,7 +86,8 @@ namespace BD
 
         private void MIInpOutNodes_Click(object sender, RoutedEventArgs e)
         {
-
+            Page8 p8 = new Page8(mainWindowFrame);
+            mainWindowFrame.Navigate(p8);
         }
 
         private void MIOwnBrow_Click(object sender, RoutedEventArgs e)

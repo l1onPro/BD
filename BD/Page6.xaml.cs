@@ -132,11 +132,13 @@ namespace BD
             {
                 SetIsNotEnableEdit();
                 MessageBox.Show("Пожалуйста, введите данные для изменения!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
             }            
             if (!ViewModel.IsNotNullListF())
             {
                 SetIsNotEnableEdit();
                 MessageBox.Show("Пожалуйста, проверьте частотную характеристику!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
             }
         }
     }    

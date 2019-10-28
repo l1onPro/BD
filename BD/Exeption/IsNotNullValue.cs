@@ -7,14 +7,15 @@ using System.Windows.Controls;
 
 namespace BD.Exeption
 {
-    class ValueLengthShort : ValidationRule
+    class IsNotNullValue : ValidationRule
     {
         public override ValidationResult Validate(object value, System.Globalization.CultureInfo cultureInfo)
         {
-            if (value.ToString().Length < 5)
-                return new ValidationResult(true, null);
+            float i;
+            if (Single.TryParse(value.ToString(), out i))
+                if (i != 0) return new ValidationResult(true, null);
 
-            return new ValidationResult(false, "Слишком большое кол-во символов.");
+            return new ValidationResult(false, "Пожалуйста, введите число != 0");
         }
     }
 }

@@ -15,7 +15,7 @@ namespace BD.Exeption
             if (int.TryParse(value.ToString(), out i))
                 if (i >= 0) return new ValidationResult(true, null);
 
-            return new ValidationResult(false, "Пожалуйста, введите число больше чем 0");
+            return new ValidationResult(false, "Пожалуйста, введите число >= 0");
         }
     }
 }

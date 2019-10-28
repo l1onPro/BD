@@ -1,4 +1,5 @@
-﻿using BD.ViewModels;
+﻿using BD.Models;
+using BD.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -39,19 +40,19 @@ namespace BD
         }
         private void CheckRadioBtn()
         {
-            if (ViewModel.TypeLaw.GetTypeLaw() == new Single_frequency_point().GetTypeLaw())
+            if (Frequency.TypeLaw == Laws.Single_frequency_point)
             {
                 rd1.IsChecked = true;
                 rd2.IsChecked = false;
                 rd3.IsChecked = false;
             }
-            if (ViewModel.TypeLaw.GetTypeLaw() == new Linear_law().GetTypeLaw())
+            if (Frequency.TypeLaw == Laws.Linear_law)
             {
                 rd1.IsChecked = false;
                 rd2.IsChecked = true;
                 rd3.IsChecked = false;               
             }
-            if (ViewModel.TypeLaw.GetTypeLaw() == new Logarithmic_law().GetTypeLaw())
+            if (Frequency.TypeLaw == Laws.Logarithmic_law)
             {
                 rd1.IsChecked = false;
                 rd2.IsChecked = false;
@@ -61,13 +62,29 @@ namespace BD
         }
 
         private void AcceptButton_Click(object sender, RoutedEventArgs e)
-        {
-            ViewModel.TypeLaw.SetListF();
+        {            
+            float num1 = Single.Parse(txtNum1.Text);
+            float num2 = Single.Parse(txtNum2.Text);
+            float i = Single.Parse(txtNum3.Text);
+            if (i == 1 && Frequency.TypeLaw == Laws.Logarithmic_law)
+            {
+                MessageBox.Show("Пожалуйста, значение отношения не равное 1!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            else if (num1 >= num2)
+            {
+                MessageBox.Show("Пожалуйста, измените макс и мин функции!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            else
+            {
+                Frequency.SetListF();
+                Page8 p8 = new Page8(frame);
+                frame.Navigate(p8);
+            }                
         }
 
         private void rd1_Checked(object sender, RoutedEventArgs e)
         {
-            ViewModel.TypeLaw = new Single_frequency_point();
+            Frequency.TypeLaw = Laws.Single_frequency_point;
             IDC1.Text = "Значение частоты (кГЦ)";
             IDC2.Text = "";
             IDC3.Text = "";
@@ -81,7 +98,7 @@ namespace BD
 
         private void rd2_Checked(object sender, RoutedEventArgs e)
         {
-            ViewModel.TypeLaw = new Linear_law();
+            Frequency.TypeLaw = Laws.Linear_law;
             IDC1.Text = "Минимальная частота Fmin(кГц)";
             IDC2.Text = "Максимальная частота(кГц)";
             IDC3.Text = "Шаг изменения dF(кГц)";
@@ -95,7 +112,7 @@ namespace BD
 
         private void rd3_Checked(object sender, RoutedEventArgs e)
         {
-            ViewModel.TypeLaw = new Logarithmic_law();
+            Frequency.TypeLaw = Laws.Logarithmic_law;
             IDC1.Text = "Минимальная частота Fmin(кГц)";
             IDC2.Text = "Максимальная частота(кГц)";
             IDC3.Text = "Отношение соседних частот К";
@@ -108,7 +125,7 @@ namespace BD
         }        
         private void UpdateWindow()
         {
-            DataContext = ViewModel.TypeLaw;
+            DataContext = new Frequency();
         }
     }
 }

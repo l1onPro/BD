@@ -4,11 +4,138 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:BD"
+      xmlns:localEx="clr-namespace:BD.Exeption"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Page8">
 
+    <Page.Resources>
+        <Style TargetType="{x:Type TextBox}">
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="Margin" Value="0,2,30,2" />
+            <Setter Property="Validation.ErrorTemplate">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <DockPanel LastChildFill="true">
+                            <Border Background="Red" DockPanel.Dock="right" Margin="5,0,0,0" Width="20" Height="20" CornerRadius="10"
+                                    ToolTip="{Binding ElementName=customAdorner, Path=AdornedElement.(Validation.Errors)[0].ErrorContent}">
+                                <TextBlock Text="!" VerticalAlignment="center" HorizontalAlignment="center" FontWeight="Bold" Foreground="white">
+                                </TextBlock>
+                            </Border>
+                            <AdornedElementPlaceholder Name="customAdorner" VerticalAlignment="Center" >
+                                <Border BorderBrush="red" BorderThickness="1" />
+                            </AdornedElementPlaceholder>
+                        </DockPanel>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Page.Resources>
+    
     <Grid>
-        
+        <Label Content="Входные и выходные узлы"></Label>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Grid.Column="0">
+                    <Label Content="Входные узлы" HorizontalAlignment="Center"></Label>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+                        <Label Grid.Column="1" Content="l+" HorizontalAlignment="Left"></Label>
+                        <TextBox Grid.Column="0" x:Name="m_lp" Width="65" Height="20" Margin="0,5,0,5"
+                         Validation.Error="Validation_Error" HorizontalAlignment="Right">
+                            <TextBox.Text>
+                                <Binding Path="lp" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay" NotifyOnValidationError="True">
+                                    <Binding.ValidationRules>
+                                        <localEx:IsNotNull ValidationStep="RawProposedValue"/>
+                                        <localEx:StringToIntValidationRule ValidationStep="RawProposedValue"/>
+                                        <localEx:ValueLengthShort ValidationStep="RawProposedValue"/>
+                                        <localEx:PositiveNumber ValidationStep="RawProposedValue"/>
+                                    </Binding.ValidationRules>
+                                </Binding>
+                            </TextBox.Text>
+                        </TextBox>
+                    </Grid>
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="2*"></ColumnDefinition>
+                            <ColumnDefinition Width="1*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+                        <Label Grid.Column="1" Content="l-" HorizontalAlignment="Left"></Label>
+                        <TextBox Grid.Column="0" x:Name="m_lm" Width="65" Height="20" Margin="0,5,0,5"
+                         Validation.Error="Validation_Error" HorizontalAlignment="Right">
+                            <TextBox.Text>
+                                <Binding Path="lm" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay" NotifyOnValidationError="True">
+                                    <Binding.ValidationRules>
+                                        <localEx:IsNotNull ValidationStep="RawProposedValue"/>
+                                        <localEx:StringToIntValidationRule ValidationStep="RawProposedValue"/>
+                                        <localEx:ValueLengthShort ValidationStep="RawProposedValue"/>
+                                        <localEx:PositiveNumber ValidationStep="RawProposedValue"/>
+                                    </Binding.ValidationRules>
+                                </Binding>
+                            </TextBox.Text>
+                        </TextBox>
+                    </Grid>
+                </StackPanel>
+
+                <StackPanel Grid.Column="1">
+                    <Label Content="Выходные узлы" HorizontalAlignment="Center"></Label>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="2*"></ColumnDefinition>
+                            <ColumnDefinition Width="1*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+                        <Label Grid.Column="1" Content="k+" HorizontalAlignment="Left"></Label>
+                        <TextBox Grid.Column="0" x:Name="m_kp" Width="65" Height="20" Margin="0,5,0,5"
+                         Validation.Error="Validation_Error" HorizontalAlignment="Right">
+                            <TextBox.Text>
+                                <Binding Path="kp" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay" NotifyOnValidationError="True">
+                                    <Binding.ValidationRules>
+                                        <localEx:IsNotNull ValidationStep="RawProposedValue"/>
+                                        <localEx:StringToIntValidationRule ValidationStep="RawProposedValue"/>
+                                        <localEx:ValueLengthShort ValidationStep="RawProposedValue"/>
+                                        <localEx:PositiveNumber ValidationStep="RawProposedValue"/>
+                                    </Binding.ValidationRules>
+                                </Binding>
+                            </TextBox.Text>
+                        </TextBox>
+                    </Grid>
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="2*"></ColumnDefinition>
+                            <ColumnDefinition Width="1*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+                        <Label Grid.Column="1" Content="k-" HorizontalAlignment="Left"></Label>
+                        <TextBox Grid.Column="0" x:Name="m_km" Width="65" Height="20" Margin="0,5,0,5"
+                         Validation.Error="Validation_Error" HorizontalAlignment="Right">
+                            <TextBox.Text>
+                                <Binding Path="km" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay" NotifyOnValidationError="True">
+                                    <Binding.ValidationRules>
+                                        <localEx:IsNotNull ValidationStep="RawProposedValue"/>
+                                        <localEx:StringToIntValidationRule ValidationStep="RawProposedValue"/>
+                                        <localEx:ValueLengthShort ValidationStep="RawProposedValue"/>
+                                        <localEx:PositiveNumber ValidationStep="RawProposedValue"/>
+                                    </Binding.ValidationRules>
+                                </Binding>
+                            </TextBox.Text>
+                        </TextBox>
+                    </Grid>
+                </StackPanel>
+            </Grid>
+            <Button x:Name="acceptButton" Content="Ok" Width="80" Margin="0,5,0,0" Click="AcceptButton_Click"/>
+        </StackPanel>
     </Grid>
 </Page>

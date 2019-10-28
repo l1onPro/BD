@@ -7,90 +7,65 @@ using System.Threading.Tasks;
 
 namespace BD.ViewModels
 {
-    interface Frequency
-    {       
-        string GetTypeLaw();       
-        void SetListF();
-    }
+    class Frequency
+    {
+        public static Laws TypeLaw { get; set; } = Laws.Single_frequency_point;
+        public static double F_min { get; set; } = 0;
+        public static double F_max { get; set; } = 0;
+        public static double Df { get; set; } = 0.1;
 
-    class Single_frequency_point : Frequency
-    {
-        public Single_frequency_point()
+        public Frequency(bool Default = false)
         {
-            F_min = 0;
-        }
-        public float F_min { get; set; }
-        public string GetTypeLaw()
-        {
-            return "Single_frequency_point";
-        }
-       
-        public void SetListF()
-        {
-            ViewModel.F = new List<float>();
-            ViewModel.F.Add(F_min);
-        }
-    }
-    class Linear_law : Frequency
-    {
-        public Linear_law()
-        {
-            F_min = 0;
-            F_max = 0;
-            Df = 0;
-        }
-        public float F_min { get; set; }
-        public float F_max { get; set; }
-        public float Df { get; set; }
-        public string GetTypeLaw()
-        {
-            return "Linear_law";
-        }
-        public float Next(float cur)
-        {
-            return cur + Df;
-        }       
-        public void SetListF()
-        {
-            float cur = F_min;
-            ViewModel.F = new List<float>();
-            
-            while (cur < F_max)
+            if (Default)
             {
-                ViewModel.F.Add(cur);
-                cur = Next(cur);
+                F_min = 0;
+                F_max = 0;
+                Df = 0.1;
             }
         }
-    }
-    class Logarithmic_law : Frequency
-    {
-        public Logarithmic_law()
-        {
-            F_min = 0;
-            F_max = 0;
-            Df = 0;
-        }
-        public float F_min { get; set; }
-        public float F_max { get; set; }
-        public float Df { get; set; }
-        public string GetTypeLaw()
-        {
-            return "Logarithmic_law";
-        }
-        public float Next(float cur)
-        {
-            return cur * Df;
-        }       
-        public void SetListF()
-        {
-            float cur = F_min;
-            ViewModel.F = new List<float>();
 
-            while (cur < F_max)
+        public static void SetListF()
+        {
+            ViewModel.F = new List<double>();
+            double cur = F_min;
+            switch (TypeLaw)
             {
-                ViewModel.F.Add(cur);
-                cur = Next(cur);
-            }
+                case Laws.Single_frequency_point:                    
+                    ViewModel.F.Add(cur);
+                    break;
+                case Laws.Linear_law: 
+                    while (cur < F_max)
+                    {
+                        ViewModel.F.Add(cur);
+                        cur = Next(cur);
+                    }
+                    break;
+                case Laws.Logarithmic_law:  
+                    while (cur < F_max)
+                    {
+                        ViewModel.F.Add(cur);
+                        cur = Next(cur);
+                    }
+                    break;
+                default:
+                    break;
+            }            
         }
-    }
+        public static double Next(double cur)
+        {
+            switch (TypeLaw)
+            {
+                case Laws.Single_frequency_point:
+                    break;
+                case Laws.Linear_law:
+                    return cur + Df;
+                case Laws.Logarithmic_law:
+                    return cur * Df;
+                default:
+                    break;
+            }
+            throw new Exception();
+            return 0;
+        }
+    }    
 }

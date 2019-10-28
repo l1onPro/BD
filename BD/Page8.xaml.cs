@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BD.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,26 @@ namespace BD
     /// </summary>
     public partial class Page8 : Page
     {
-        public Page8()
+        private int _noOfErrorsOnScreen = 0;
+
+        Frame frame;
+        public Page8(Frame frame)
         {
             InitializeComponent();
+            this.frame = frame;
+            DataContext = new Nodes();
+        }
+        private void Validation_Error(object sender, ValidationErrorEventArgs e)
+        {
+            if (e.Action == ValidationErrorEventAction.Added)
+                _noOfErrorsOnScreen++;
+            else
+                _noOfErrorsOnScreen--;
+            acceptButton.IsEnabled = _noOfErrorsOnScreen == 0;
+        }
+        private void AcceptButton_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

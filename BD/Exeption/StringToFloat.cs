@@ -7,14 +7,16 @@ using System.Windows.Controls;
 
 namespace BD.Exeption
 {
-    class ValueLengthShort : ValidationRule
+    class StringToFloat : ValidationRule
     {
         public override ValidationResult Validate(object value, System.Globalization.CultureInfo cultureInfo)
         {
-            if (value.ToString().Length < 5)
+            float i;
+            string str = value.ToString();             
+            if (Single.TryParse(str, out i)) 
                 return new ValidationResult(true, null);
 
-            return new ValidationResult(false, "Слишком большое кол-во символов.");
+            return new ValidationResult(false, "Пожалуйста, введите численное значение.");
         }
     }
 }

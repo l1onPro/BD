@@ -12,5 +12,12 @@ namespace BD.ViewModels
         public static int lm { get; set; } = 0;
         public static int kp { get; set; } = 0;
         public static int km { get; set; } = 0;
+        public Nodes(bool Default = false)
+        {
+            if (Default)
+            {
+                lp = lm = kp = km = 0;
+            }
+        }
     }
 }
