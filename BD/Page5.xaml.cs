@@ -70,7 +70,7 @@ namespace BD
             {
                 MessageBox.Show("Пожалуйста, значение отношения не равное 1!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-            else if (num1 >= num2)
+            else if (num1 >= num2 && Frequency.TypeLaw != Laws.Single_frequency_point)
             {
                 MessageBox.Show("Пожалуйста, измените макс и мин функции!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
             }
