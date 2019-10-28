@@ -113,9 +113,7 @@
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
-            </TextBox>
-            
-            
+            </TextBox>  
 
             <Button Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="3" x:Name="acceptButton" Content="Ok" IsDefault="True" Width="80" Click="AcceptButton_Click" Margin="0,20,0,0"></Button>
         </Grid>

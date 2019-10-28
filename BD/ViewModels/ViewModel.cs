@@ -53,7 +53,9 @@ namespace BD.ViewModels
         public static List<R> listR { get; set; }
         public static List<C> listC { get; set; }
         public static List<L> listL { get; set; }
-        
+
+        public static Frequency TypeLaw { get; set; } = new Single_frequency_point();
+        public static List<float> F;
         public ViewModel()
         {
            
@@ -68,6 +70,8 @@ namespace BD.ViewModels
             listR = new List<R>();
             listC = new List<C>();
             listL = new List<L>();
+
+            F = new List<float>();
         }
         public static bool IsNotNullNeedEl()
         {
@@ -82,6 +86,12 @@ namespace BD.ViewModels
                 return true;
 
             return false;
+        }
+        public static bool IsNotNullListF()
+        {
+            if (F == null) return false;
+
+            return true;
         }
         public static bool IsNotNullListsEl()
         {

@@ -4,16 +4,40 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:BD"
+      xmlns:localEx="clr-namespace:BD.Exeption"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Page5">
 
+    <Page.Resources>
+        <Style TargetType="{x:Type TextBox}">
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="Margin" Value="0,2,30,2" />
+            <Setter Property="Validation.ErrorTemplate">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <DockPanel LastChildFill="true">
+                            <Border Background="Red" DockPanel.Dock="right" Margin="5,0,0,0" Width="20" Height="20" CornerRadius="10"
+                                    ToolTip="{Binding ElementName=customAdorner, Path=AdornedElement.(Validation.Errors)[0].ErrorContent}">
+                                <TextBlock Text="!" VerticalAlignment="center" HorizontalAlignment="center" FontWeight="Bold" Foreground="white">
+                                </TextBlock>
+                            </Border>
+                            <AdornedElementPlaceholder Name="customAdorner" VerticalAlignment="Center" >
+                                <Border BorderBrush="red" BorderThickness="1" />
+                            </AdornedElementPlaceholder>
+                        </DockPanel>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Page.Resources>
+    
     <Grid>
         <Label Content="Вид частотной характеристики"></Label>
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-            <RadioButton GroupName="IDC" Margin="0,0,0,10" Content="Единственная частотная точка" IsChecked="True"></RadioButton>
-            <RadioButton GroupName="IDC" Margin="0,0,0,10" Content="Линейный закон изменрения частоты"></RadioButton>
-            <RadioButton GroupName="IDC" Margin="0,0,0,10" Content="Логарифмический закон измерения частоты"></RadioButton>
+            <RadioButton x:Name="rd1" GroupName="IDC" Margin="0,0,0,10" Content="Единственная частотная точка" Checked="rd1_Checked"></RadioButton>
+            <RadioButton x:Name="rd2" GroupName="IDC" Margin="0,0,0,10" Content="Линейный закон изменрения частоты" Checked="rd2_Checked"></RadioButton>
+            <RadioButton x:Name="rd3" GroupName="IDC" Margin="0,0,0,10" Content="Логарифмический закон измерения частоты" Checked="rd3_Checked"></RadioButton>
 
             <Grid>
                 <Grid.RowDefinitions>
@@ -27,13 +51,54 @@
                     <ColumnDefinition Width="0.5*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
 
-                <TextBox Grid.Column="0" Grid.Row="0" Margin="0,0,0,10" IsReadOnly="True" IsEnabled="False"></TextBox>
-                <TextBox Grid.Column="0" Grid.Row="1" Margin="0,0,0,10" IsReadOnly="True" IsEnabled="False"></TextBox>
-                <TextBox Grid.Column="0" Grid.Row="2" Margin="0,0,0,10" IsReadOnly="True" IsEnabled="False"></TextBox>
+                <TextBox x:Name="IDC1" Grid.Column="0" Grid.Row="0" Margin="0,0,0,10"
+                         IsReadOnly="True" IsEnabled="False">                   
+                </TextBox>
+                <TextBox x:Name="IDC2" Grid.Column="0" Grid.Row="1" Margin="0,0,0,10" 
+                         IsReadOnly="True" IsEnabled="False">
+                    
+                </TextBox>
+                <TextBox x:Name="IDC3" Grid.Column="0" Grid.Row="2" Margin="0,0,0,10"
+                         IsReadOnly="True" IsEnabled="False">
+                    
+                </TextBox>
 
-                <TextBox Grid.Column="2" Grid.Row="0" Margin="0,0,0,10"></TextBox>
-                <TextBox Grid.Column="2" Grid.Row="1" Margin="0,0,0,10"></TextBox>
-                <TextBox Grid.Column="2" Grid.Row="2" Margin="0,0,0,10"></TextBox>
+                <TextBox x:Name="txtNum1" Grid.Column="2" Grid.Row="0" Margin="0,0,0,10" Validation.Error="Validation_Error">
+                    <TextBox.Text>
+                        <Binding Path="F_min" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay" NotifyOnValidationError="True">
+                            <Binding.ValidationRules>
+                                <localEx:IsNotNull ValidationStep="RawProposedValue"/>
+                                <localEx:StringToIntValidationRule ValidationStep="RawProposedValue"/>
+                                <localEx:ValueLengthShort ValidationStep="RawProposedValue"/>
+                                <localEx:PositiveNumber ValidationStep="RawProposedValue"/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+                <TextBox x:Name="txtNum2" Grid.Column="2" Grid.Row="1" Margin="0,0,0,10" Validation.Error="Validation_Error">
+                    <TextBox.Text>
+                        <Binding Path="F_max" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay" NotifyOnValidationError="True">
+                            <Binding.ValidationRules>
+                                <localEx:IsNotNull ValidationStep="RawProposedValue"/>
+                                <localEx:StringToIntValidationRule ValidationStep="RawProposedValue"/>
+                                <localEx:ValueLengthShort ValidationStep="RawProposedValue"/>
+                                <localEx:PositiveNumber ValidationStep="RawProposedValue"/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+                <TextBox x:Name="txtNum3" Grid.Column="2" Grid.Row="2" Margin="0,0,0,10" Validation.Error="Validation_Error">
+                    <TextBox.Text>
+                        <Binding Path="Df" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay" NotifyOnValidationError="True">
+                            <Binding.ValidationRules>
+                                <localEx:IsNotNull ValidationStep="RawProposedValue"/>
+                                <localEx:StringToIntValidationRule ValidationStep="RawProposedValue"/>
+                                <localEx:ValueLengthShort ValidationStep="RawProposedValue"/>
+                                <localEx:PositiveNumber ValidationStep="RawProposedValue"/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
             </Grid>
             
             <Button x:Name="acceptButton" Content="Ok" IsDefault="True" Width="80" Click="AcceptButton_Click"></Button>

@@ -15,7 +15,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace BD
-{   
+{
     /// <summary>
     /// Логика взаимодействия для Page6.xaml
     /// </summary>
@@ -24,7 +24,7 @@ namespace BD
         private int _noOfErrorsOnScreen = 0;
         Frame frame;
 
-        List<string> listEl;      
+        List<string> listEl;
         public Page6(Frame _frame)
         {
             InitializeComponent();
@@ -36,14 +36,14 @@ namespace BD
             listEl = new List<string>();
             listEl.Add("Резисторы");
             listEl.Add("Конденсаторы");
-            listEl.Add("Индуктивности");           
+            listEl.Add("Индуктивности");
 
             listBoxEl.Items.Clear();
             setListBox();
         }
         private void acceptButton_Click(object sender, RoutedEventArgs e)
         {
-            
+
         }
         private void Validation_Error(object sender, ValidationErrorEventArgs e)
         {
@@ -79,7 +79,7 @@ namespace BD
         private void m_num_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             int curNumEl = m_num.SelectedIndex;
-            if (curNumEl == -1) SetStandartText();          
+            if (curNumEl == -1) SetStandartText();
             else
             {
                 if (listBoxEl.SelectedItem.ToString() == listEl[0])
@@ -94,7 +94,7 @@ namespace BD
                 {
                     this.DataContext = ViewModel.listL[curNumEl];
                 }
-            }           
+            }
         }
 
         private void SetStandartText()
@@ -119,13 +119,13 @@ namespace BD
             m_nm2.IsEnabled = false;
             m_np1.IsEnabled = false;
             m_np2.IsEnabled = false;
-            m_z1.IsEnabled =  false;
-            m_z2.IsEnabled =  false;
-            m_z3.IsEnabled =  false;
-            m_z4.IsEnabled =  false;
-            m_z5.IsEnabled =  false;
-            m_z6.IsEnabled =  false;
-        }       
+            m_z1.IsEnabled = false;
+            m_z2.IsEnabled = false;
+            m_z3.IsEnabled = false;
+            m_z4.IsEnabled = false;
+            m_z5.IsEnabled = false;
+            m_z6.IsEnabled = false;
+        }
         private void CheckGoodEdit()
         {
             if (!ViewModel.IsNotNullNeedEl() || !ViewModel.IsNotNullListsEl())
@@ -133,6 +133,11 @@ namespace BD
                 SetIsNotEnableEdit();
                 MessageBox.Show("Пожалуйста, введите данные для изменения!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
             }            
+            if (!ViewModel.IsNotNullListF())
+            {
+                SetIsNotEnableEdit();
+                MessageBox.Show("Пожалуйста, проверьте частотную характеристику!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
     }    
 }
