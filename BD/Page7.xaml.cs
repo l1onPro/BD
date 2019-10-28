@@ -24,7 +24,7 @@ namespace BD
         Frame frame;
         public Page7(Frame _frame)
         {
-            InitializeComponent();
+            InitializeComponent(); 
             frame = _frame;
         }
 
@@ -32,6 +32,11 @@ namespace BD
         {
             bool good = File.InputFromFile(txtNameFile.Text + ".txt");
             if (!good) MessageBox.Show("Не удалось открыть с файла", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            else
+            {
+                Page5 p5 = new Page5(frame);
+                frame.Navigate(p5);
+            }
         }
     }
 }

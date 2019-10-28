@@ -26,7 +26,7 @@ namespace BD
             InitializeComponent();
             frame = _frame;
         }
-
+        
         private void AcceptButton_Click(object sender, RoutedEventArgs e)
         {
 

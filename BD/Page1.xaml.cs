@@ -32,5 +32,11 @@ namespace BD
             Page2 p2 = new Page2(frame);
             frame.Navigate(p2);
         }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            Page7 p7 = new Page7(frame);
+            frame.Navigate(p7);
+        }
     }
 }
