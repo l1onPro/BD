@@ -1,0 +1,33 @@
+﻿<Page x:Class="BD.Page9"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      
+      xmlns:local="clr-namespace:BD"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Page9">
+
+    <Grid>
+        <Label Content="Интернет"></Label>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
+                <Label>Адрес</Label>
+                <ComboBox Name="cmbIDC" Margin="10,0,0,0" Width="150"></ComboBox>
+                <Button x:Name="IDC_INP" Width="80"  Content="Ввод" Margin="10,0,0,0"  Click="IDC_INP_Click"></Button>
+                <Button x:Name="btnBack" Width="80" Content="Назад" Margin="10,0,0,0" Click="btnBack_Click"></Button>
+                <Button x:Name="btnForward" Width="80" Content="Вперед" Margin="10,0,0,0" Click="btnForward_Click"></Button>
+                <Button x:Name="btnStop" Width="80" Content="Обновить" Margin="10,0,0,0"  Click="btnStop_Click"></Button>
+            </StackPanel>
+            <WebBrowser  x:Name="explorer" HorizontalAlignment="Center" Height="316" Margin="0,10,0,0" VerticalAlignment="Center" Width="555" Navigated="explorer_Navigated" Navigating="explorer_Navigating" LoadCompleted="explorer_LoadCompleted"/>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,10,0,0">
+                <ProgressBar Width="100" x:Name="prgsBar"></ProgressBar>
+                <Button x:Name="btnClose" Content="Закрыть" Width="80" Margin="10,0,0,0" Click="btnClose_Click"/>
+            </StackPanel>         
+           
+        </StackPanel>
+
+    </Grid>
+</Page>

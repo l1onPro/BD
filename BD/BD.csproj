@@ -62,6 +62,9 @@
     <Compile Include="Exeption\StringToFloat.cs" />
     <Compile Include="Exeption\ValueLengthShort.cs" />
     <Compile Include="FilleApp\File.cs" />
+    <Compile Include="MainPage.xaml.cs">
+      <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Models\C.cs" />
     <Compile Include="Models\Element.cs" />
     <Compile Include="Models\GV.cs" />
@@ -69,6 +72,7 @@
     <Compile Include="Models\L.cs" />
     <Compile Include="Models\Laws.cs" />
     <Compile Include="Models\R.cs" />
+    <Compile Include="Models\TypeInternet.cs" />
     <Compile Include="Page6.xaml.cs">
       <DependentUpon>Page6.xaml</DependentUpon>
     </Compile>
@@ -78,9 +82,16 @@
     <Compile Include="Page8.xaml.cs">
       <DependentUpon>Page8.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Page9.xaml.cs">
+      <DependentUpon>Page9.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewModels\Frequency.cs" />
     <Compile Include="ViewModels\Nodes.cs" />
     <Compile Include="ViewModels\ViewModel.cs" />
+    <Page Include="MainPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -140,6 +151,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Page9.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -159,6 +174,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include=".editorconfig" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

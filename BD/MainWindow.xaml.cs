@@ -24,7 +24,10 @@ namespace BD
     {
         public MainWindow()
         {
-            InitializeComponent();            
+            InitializeComponent();
+
+            MainPage mainPage = new MainPage();
+            mainWindowFrame.Navigate(mainPage);
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
@@ -63,7 +66,8 @@ namespace BD
 
         private void btnMainPage_Click(object sender, RoutedEventArgs e)
         {
-
+            MainPage mainPage = new MainPage();
+            mainWindowFrame.Navigate(mainPage);
         }
 
         private void btnDescript_Click(object sender, RoutedEventArgs e)
@@ -92,12 +96,12 @@ namespace BD
 
         private void MIOwnBrow_Click(object sender, RoutedEventArgs e)
         {
-
+            ViewModel.typeInternet = Models.TypeInternet.Own;
         }
 
         private void MISysBrow_Click(object sender, RoutedEventArgs e)
         {
-
+            ViewModel.typeInternet = Models.TypeInternet.System;
         }
 
         private void MICalculate_Click(object sender, RoutedEventArgs e)
@@ -107,7 +111,15 @@ namespace BD
 
         private void MIInternet_Click(object sender, RoutedEventArgs e)
         {
-
+            if (ViewModel.typeInternet == Models.TypeInternet.Own)
+            {
+                Page9 p9 = new Page9(mainWindowFrame);
+                mainWindowFrame.Navigate(p9);
+            }
+            else
+            {
+                System.Diagnostics.Process.Start("http://127.0.0.1/MF/Int3d.htm");
+            }
         }
     }
 }

@@ -55,6 +55,8 @@ namespace BD.ViewModels
         public static List<L> listL { get; set; }
         
         public static List<double> F;
+
+        public static TypeInternet typeInternet { get; set; } = TypeInternet.Own;
         public ViewModel()
         {
            
