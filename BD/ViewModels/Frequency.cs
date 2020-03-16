@@ -65,7 +65,6 @@ namespace BD.ViewModels
                     break;
             }
             throw new Exception();
-            return 0;
         }
     }    
 }

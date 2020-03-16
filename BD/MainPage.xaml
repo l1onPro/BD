@@ -9,6 +9,8 @@
       Title="MainPage">
 
     <Grid>
-        <ListBox x:Name="listBoxResult"></ListBox>
+        <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Visible">
+            <TextBox x:Name="result" TextWrapping="Wrap" IsReadOnly="True"></TextBox>
+        </ScrollViewer>       
     </Grid>
 </Page>

@@ -11,9 +11,30 @@ namespace BD.Models
         public string Name { get; set; }
         public string Unit { get; set; }
         public int CurNum { get; set; }
-        public int N_plus { get; set; }
-        public int N_minus { get; set; }
-        public float Z { get; set; }    
+        public int[] in_el { get; set; } = new int[2];
+        public int N_plus
+        {
+            get
+            {
+                return in_el[0];
+            }
+            set
+            {
+                in_el[0] = value;
+            }
+        }
+        public int N_minus
+        {
+            get
+            {
+                return in_el[1];
+            }
+            set
+            {
+                in_el[1] = value;
+            }
+        }
+        public double Z { get; set; } = 0.0;
 
         public override string ToString()
         {
@@ -25,13 +46,13 @@ namespace BD.Models
                    "Z: " + Z;
         }
 
-        public Element(string name, string unit, int curNum, int n_plus, int n_minus, float z)
+        public Element(string name, string unit, int curNum, int n_plus, int n_minus, double z)
         {
             Name = name;
             Unit = unit;
             CurNum = curNum;
             N_plus = n_plus;
-            N_minus = n_minus;
+            N_minus = n_minus;            
             Z = z;
         }
 

@@ -24,5 +24,21 @@ namespace BD
         {
             InitializeComponent();
         }
+
+        public void calculate()
+        {
+            Calculate.Calculate calculate = new Calculate.Calculate();
+            calculate.CalculateAlg();
+            string str = "";
+            for (int i = 0; i < ViewModels.ViewModel.NR + 1; i++)
+            {
+                for (int j = 0; j < ViewModels.ViewModel.NR + 1; j++)
+                {
+                    str += ViewModels.ViewModel.a[i, j] + " ";
+                }
+                str += "\n";
+            }
+            result.Text = str;
+        }
     }
 }

@@ -55,6 +55,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Calculate\Calculate.cs" />
     <Compile Include="Converters\ProxyConverterTest.cs" />
     <Compile Include="Exeption\IsNotNull.cs" />
     <Compile Include="Exeption\IsNotNullValue.cs" />
@@ -179,9 +180,6 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\" />

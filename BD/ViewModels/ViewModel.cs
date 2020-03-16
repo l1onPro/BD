@@ -56,6 +56,10 @@ namespace BD.ViewModels
         
         public static List<double> F;
 
+        public static int M = 100;
+        public static double[,] a = new double[M + 1, M + 1];
+        public static double[,] b = new double[M + 1, M + 1];
+
         public static TypeInternet typeInternet { get; set; } = TypeInternet.Own;
         public ViewModel()
         {

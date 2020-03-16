@@ -106,7 +106,9 @@ namespace BD
 
         private void MICalculate_Click(object sender, RoutedEventArgs e)
         {
-
+            MainPage mainPage = new MainPage();
+            mainWindowFrame.Navigate(mainPage);
+            mainPage.calculate();
         }
 
         private void MIInternet_Click(object sender, RoutedEventArgs e)
