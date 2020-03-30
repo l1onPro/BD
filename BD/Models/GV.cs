@@ -31,5 +31,10 @@ namespace BD.Models
         //private static float[] roa = new float[MF + 1];
         //private static String filename;
         //private static bool flag = false;
+
+        public static void setup()
+        {
+
+        }
     }
 }

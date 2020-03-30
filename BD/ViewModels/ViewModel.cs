@@ -9,6 +9,7 @@ namespace BD.ViewModels
 {
     class ViewModel
     {
+        public static int N { get; set; } = 0;
         /// <summary>
         /// Число узлов
         /// </summary>
@@ -48,7 +49,7 @@ namespace BD.ViewModels
         /// <summary>
         /// Кол-во ид. трансформаторов
         /// </summary>
-        public static int NTR { get; set; } = 0;   
+        public static int NTR { get; set; } = 0; 
 
         public static List<R> listR { get; set; }
         public static List<C> listC { get; set; }
@@ -56,10 +57,19 @@ namespace BD.ViewModels
         
         public static List<double> F;
 
+
         public static int M = 100;
         public static double[,] a = new double[M + 1, M + 1];
         public static double[,] b = new double[M + 1, M + 1];
-
+        public static double om = 0;
+        public static Complex[,] w = new Complex[M + 1, M + 1];
+        public static int MF = 20;
+        public static float[] kum = new float[MF + 1];
+        public static float[] kua = new float[MF + 1];
+        public static float[] rim = new float[MF + 1];
+        public static float[] ria = new float[MF + 1];
+        public static float[] rom = new float[MF + 1];
+        public static float[] roa = new float[MF + 1];
         public static TypeInternet typeInternet { get; set; } = TypeInternet.Own;
         public ViewModel()
         {

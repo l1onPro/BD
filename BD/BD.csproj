@@ -56,6 +56,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Calculate\Calculate.cs" />
+    <Compile Include="Complex.cs" />
     <Compile Include="Converters\ProxyConverterTest.cs" />
     <Compile Include="Exeption\IsNotNull.cs" />
     <Compile Include="Exeption\IsNotNullValue.cs" />
