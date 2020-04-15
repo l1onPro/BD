@@ -21,17 +21,21 @@ namespace BD
     /// </summary>
     public partial class MainPage : Page
     {
-        public MainPage()
+        Frame _frame;
+        public MainPage(Frame frame)
         {
             InitializeComponent();
+            _frame = frame;
         }
 
         public void calculate()
         {
             Calculate.Calculate calculate = new Calculate.Calculate();
             calculate.CalculateAlg();
+            Page10 p10 = new Page10();
+            _frame.Navigate(p10);
 
-            //Вывод результатов моделирования
+            /*//Вывод результатов моделирования
             string str = "";
             str = "Результаты моделирования ";
             result.AppendText(str + "\r\n");
@@ -59,7 +63,7 @@ namespace BD
                             ViewModel.F[kf], ViewModel.kum[kf], ViewModel.kua[kf], ViewModel.rim[kf], ViewModel.ria[kf]);
                     result.AppendText(str + "\r\n");
                 }
-            }
+            }*/
 
             /*string str = "";
             for (int i = 0; i < ViewModels.ViewModel.NR + 1; i++)

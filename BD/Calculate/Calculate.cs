@@ -11,17 +11,27 @@ namespace BD.Calculate
     class Calculate
     {
         public void CalculateAlg()
-        {
-            //обнуление массивов 
-            NullArrays();
+        {            
+            ViewModel.vGovno();
+            ViewModel.om = 2 * 3.14 * ViewModel.f[1];
+            form_d(ref ViewModel.in_r, ref ViewModel.z_r, ViewModel.NR, 'R');
+            form_d(ref ViewModel.in_c, ref ViewModel.z_c, ViewModel.NC, 'C');
+            form_d(ref ViewModel.in_l, ref ViewModel.z_l, ViewModel.NL, 'L');
+            form_w();
+            st();
 
-            ViewModel.N = ViewModel.NV;
-            form_d(ViewModel.listR);
-            form_d(ViewModel.listC);
-            form_d(ViewModel.listL);
-
-            for (int kf = 0; kf < ViewModel.F.Count; kf++)
+            sf1(1);
+            sf2(1);
+            
+            /*for (int kf = 0; kf < ViewModel.F.Count; kf++)
             {
+                ViewModel.s = new Complex(0.0, );
+                //обнуление массивов 
+                NullArrays();
+
+                ViewModel.N = ViewModel.NV;
+                
+
                 ViewModel.om = 2 * 3.141593 * ViewModel.F[kf];
                 
                 form_w();
@@ -37,116 +47,72 @@ namespace BD.Calculate
                     gauss_c();
                     sf2(kf);
                 }
-            }            
+            }       */
         }
-
-        private void NullArrays()
+        public static void form_d(ref int[,] in_d, ref double[] z_d, int nd, char td)
         {
-            for (int i = 0; i <ViewModel.M; i++)
-            {
-                for (int j = 0; j < ViewModel.M; j++)
-                {
-                    ViewModel.a[i, j] = 0;
-                    ViewModel.b[i, j] = 0;
-                }
-            }
-        }
-        
-        /// <summary>
-        /// Формирование вещественных частотно-независимых матриц
-        /// </summary>
-        private void form_d(List<R> listEl)
-        {
-            for (int kd = 0; kd < listEl.Count; kd++)
-            {
-                for (int l = 0; l <= 1; l++)
-                {
-                    int i = listEl[kd].in_el[l];
-                    if (i == 0) continue;
-                    for (int m = 0; m <= 1; m++)
+            int i, j, l, m, g;
+            if (td != 'L')
+                for (int kd = 1; kd <= nd; kd++)
+                    for (l = 0; l <= 1; l++)
                     {
-                        int j = listEl[kd].in_el[m];
-                        if (j == 0) continue;
-                        int g = (1 - 2 * l) * (1 - 2 * m);
-                        ViewModel.a[i, j] += g / listEl[kd].Z;
+                        i = in_d[kd, l];
+                        if (i == 0) continue;
+                        for (m = 0; m <= 1; m++)
+                        {
+                            j = in_d[kd, m];
+                            if (j == 0) continue;
+                            g = (1 - 2 * l) * (1 - 2 * m);
+                            switch (td)
+                            {
+                                case 'R':
+                                    ViewModel.a[i, j] += g / z_d[kd];
+                                    break;
+                                case 'C':
+                                    ViewModel.b[i, j] += g * z_d[kd];
+                                    break;
+                            }
+                        }
                     }
-                }  
-            }
-        }
-        /// <summary>
-        /// Формирование вещественных частотно-независимых матриц
-        /// </summary>
-        private void form_d(List<C> listEl)
-        {
-            for (int kd = 0; kd < listEl.Count; kd++)
+            else
             {
-                for (int l = 0; l <= 1; l++)
+                for (int kd = 1; kd <= nd; kd++)
                 {
-                    int i = listEl[kd].in_el[l];
-                    if (i == 0) continue;
-                    for (int m = 0; m <= 1; m++)
+                    i = ViewModel.n + kd;
+                    ViewModel.b[i, i] = z_d[kd];
+                    for (m = 0; m <= 1; m++)
                     {
-                        int j = listEl[kd].in_el[m];
+                        j = in_d[kd, m];
                         if (j == 0) continue;
-                        int g = (1 - 2 * l) * (1 - 2 * m);
-                        ViewModel.a[i, j] += g * listEl[kd].Z;
+                        g = 1 - 2 * m;
+                        ViewModel.a[i, j] -= g;
+                        ViewModel.a[j, i] += g;
                     }
                 }
+                ViewModel.n += nd;
             }
         }
-        /// <summary>
-        /// Формирование вещественных частотно-независимых матриц
-        /// </summary>
-        private void form_d(List<L> listEl)
+        public static void form_w()
         {
-            for (int kd = 0; kd < listEl.Count; kd++)
-            {
-                int i = ViewModel.N + kd + 1;
-                ViewModel.b[i, i] = listEl[kd].Z;
-                for (int m = 0; m < 1; m++)
+            int i, j;
+            double t;
+            for (i = 1; i <= ViewModel.n; i++)
+                for (j = 1; j <= ViewModel.n; j++)
                 {
-                    int j = listEl[kd].in_el[m];
-                    if (j == 0) continue;
-                    int g = 1 - 2 * m;
-                    ViewModel.a[i, j] -= g;
-                    ViewModel.a[i, j] += g;
-                }
-            }
-            ViewModel.N += listEl.Count + 1;
-        }
-        private void form_w()
-        {
-            for (int i = 1; i < ViewModel.N; i++)
-            {
-                for (int j = 1; j < ViewModel.N; j++)
-                {
-                    double t = ViewModel.b[i, j];
-                   if (t != 0)
+                    t = ViewModel.b[i, j];
+                    if (t != 0)
                         t *= ViewModel.om;
                     ViewModel.w[i, j] = new Complex(ViewModel.a[i, j], t);
                 }
-            }
         }
-        private void form_s()
-        {
-            for (int i = 1; i < ViewModel.N; i++)
-            {
-                ViewModel.w[i, 0] = new Complex(0, 0);
-                if (Nodes.lp != 0)
-                    ViewModel.w[Nodes.lp, 0] = new Complex(-1, 0);
-                if (Nodes.lm != 0)
-                    ViewModel.w[Nodes.lm, 0] = new Complex(1, 0);
-            }
-        }
-
-        private void st()
+        public static void st()
         {
             Complex c = new Complex(0, 0);
             Complex t = new Complex(0, 0);
             Complex cn = new Complex(0, 0);
             double g;
             int l;
-            for (int k = ViewModel.N; k >= 3; k--)
+            for (int k = ViewModel.n; k >= 3; k--)
             {
                 l = k;
                 g = 0.001;
@@ -160,7 +126,7 @@ namespace BD.Calculate
                     }
                 }
                 if (l != k)
-                    for (int j = k; j <= ViewModel.N; j++)
+                    for (int j = k; j <= ViewModel.n; j++)
                     {
                         t = ViewModel.w[k, j];
                         ViewModel.w[k, j] = ViewModel.w[l, j];
@@ -177,7 +143,7 @@ namespace BD.Calculate
                 }
             }
         }
-        private void sf1(int kf)
+        public static void sf1(int kf)
         {
             Complex ku = new Complex(0, 0);
             Complex ri = new Complex(0, 0);
@@ -202,14 +168,14 @@ namespace BD.Calculate
             Complex d = new Complex(0, 0);
             Complex t = new Complex(0, 0);
             Complex cn = new Complex(0, 0);
-            for (k = 1; k < ViewModel.N; k++)
+            for (k = 1; k < ViewModel.n; k++)
             {
                 l = k;
-                for (i = k + 1; i <= ViewModel.N; i++)
+                for (i = k + 1; i <= ViewModel.n; i++)
                     if (ViewModel.w[i, k].abs > ViewModel.w[l, k].abs)
                         l = i;
                 if (l != k)
-                    for (j = 0; j <= ViewModel.N; j++)
+                    for (j = 0; j <= ViewModel.n; j++)
                         if (j == 0 || j >= k)
                         {
                             t = ViewModel.w[k, j];
@@ -217,33 +183,34 @@ namespace BD.Calculate
                             ViewModel.w[l, j] = t;
                         }
                 d = 1.0 / ViewModel.w[k, k];
-                for (i = k + 1; i <= ViewModel.N; i++)
+                for (i = k + 1; i <= ViewModel.n; i++)
                 {
                     if (ViewModel.w[i, k] == cn)
                         continue;
                     c = ViewModel.w[i, k] * d;
-                    for (j = k + 1; j <= ViewModel.N; j++)
+                    for (j = k + 1; j <= ViewModel.n; j++)
                         if (ViewModel.w[k, j] != cn)
                             ViewModel.w[i, j] = ViewModel.w[i, j] - c * ViewModel.w[k, j];
                     if (ViewModel.w[k, 0] != cn)
                         ViewModel.w[i, 0] = ViewModel.w[i, 0] - c * ViewModel.w[k, 0];
                 }
             }
-            ViewModel.w[0, ViewModel.N] = -ViewModel.w[ViewModel.N, 0] / ViewModel.w[ViewModel.N, ViewModel.N];
-            for (i = ViewModel.N - 1; i >= 1; i--)
+            ViewModel.w[0, ViewModel.n] = -ViewModel.w[ViewModel.n, 0] / ViewModel.w[ViewModel.n, ViewModel.n];
+            for (i = ViewModel.n - 1; i >= 1; i--)
             {
                 t = ViewModel.w[i, 0];
-                for (j = i + 1; j <= ViewModel.N; j++)
+                for (j = i + 1; j <= ViewModel.n; j++)
                     t = t + ViewModel.w[i, j] * ViewModel.w[0, j];
                 ViewModel.w[0, i] = -t / ViewModel.w[i, i];
             }
         }
-        private void sf2(int kf)
+
+        public static void sf2(int kf)
         {
             Complex ku = new Complex(0, 0);
             Complex ri = new Complex(0, 0);
-            ri = ViewModel.w[0, Nodes.lp] - ViewModel.w[0, Nodes.lm];
-            ku = (ViewModel.w[0, Nodes.kp] - ViewModel.w[0, Nodes.km]) / ri;
+            ri = ViewModel.w[1, ViewModel.lp] - ViewModel.w[1, ViewModel.lm];
+            ku = (ViewModel.w[1, ViewModel.kp] - ViewModel.w[1, ViewModel.km]) / ri;
             ViewModel.kum[kf] = (float)ku.abs;
             ViewModel.kua[kf] = (float)ku.arg * 180.0f / (float)Math.PI;
             ViewModel.rim[kf] = (float)ri.abs;

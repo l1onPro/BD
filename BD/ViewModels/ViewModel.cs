@@ -57,19 +57,64 @@ namespace BD.ViewModels
         
         public static List<double> F;
 
+        public static int M = 100, MR = 50, MF = 20;
+        public static int n = 0, lp, lm, kp, km;
+        public static int[,] in_r = new int[MR + 1, 2];
+        public static int[,] in_c = new int[MR + 1, 2];
+        public static int[,] in_l = new int[MR + 1, 2];
 
-        public static int M = 100;
+        public static double[] z_r = new double[MR + 1];
+        public static double[] z_c = new double[MR + 1];
+        public static double[] z_l = new double[MR + 1];
         public static double[,] a = new double[M + 1, M + 1];
         public static double[,] b = new double[M + 1, M + 1];
-        public static double om = 0;
+        public static double om;
         public static Complex[,] w = new Complex[M + 1, M + 1];
-        public static int MF = 20;
-        public static float[] kum = new float[MF + 1];
-        public static float[] kua = new float[MF + 1];
-        public static float[] rim = new float[MF + 1];
-        public static float[] ria = new float[MF + 1];
-        public static float[] rom = new float[MF + 1];
-        public static float[] roa = new float[MF + 1];
+        public static double[] kum = new double[MF + 1];
+        public static double[] kua = new double[MF + 1];
+        public static double[] rim = new double[MF + 1];
+        public static double[] ria = new double[MF + 1];
+        public static double[] rom = new double[MF + 1];
+        public static double[] roa = new double[MF + 1];
+        public static double[] f = new double[MF + 1];
+        public static void vGovno()
+        {
+            int j = 1;
+            for (int i = 0; i < listR.Count; i++)
+            {
+                in_r[j, 0] = listR[i].N_plus;
+                in_r[j, 1] = listR[i].N_minus;
+                z_r[j] = listR[i].Z;
+                j++;
+            }
+            j = 1;
+            for (int i = 0; i < listC.Count; i++)
+            {
+                in_c[j, 0] = listC[i].N_plus;
+                in_c[j, 1] = listC[i].N_minus;
+                z_c[j] = listC[i].Z;
+                j++;
+            }
+            j = 1;
+            for (int i = 0; i < listL.Count; i++)
+            {
+                in_l[j, 0] = listL[i].N_plus;
+                in_l[j, 1] = listL[i].N_minus;
+                z_l[j] = listL[i].Z;
+                j++;
+            }
+            n = NV;
+            j = 1;
+            for (int i = 0; i < F.Count; i++)
+            {
+                f[j] = F[i];
+                j++;
+            }
+            lp = Nodes.lp + 1;
+            lm = Nodes.lm + 1;
+            kp = Nodes.kp + 1;
+            km = Nodes.km + 1;
+        }
         public static TypeInternet typeInternet { get; set; } = TypeInternet.Own;
         public ViewModel()
         {

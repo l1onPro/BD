@@ -26,7 +26,7 @@ namespace BD
         {
             InitializeComponent();
 
-            MainPage mainPage = new MainPage();
+            MainPage mainPage = new MainPage(mainWindowFrame);
             mainWindowFrame.Navigate(mainPage);
         }
 
@@ -66,7 +66,7 @@ namespace BD
 
         private void btnMainPage_Click(object sender, RoutedEventArgs e)
         {
-            MainPage mainPage = new MainPage();
+            MainPage mainPage = new MainPage(mainWindowFrame);
             mainWindowFrame.Navigate(mainPage);
         }
 
@@ -106,7 +106,7 @@ namespace BD
 
         private void MICalculate_Click(object sender, RoutedEventArgs e)
         {
-            MainPage mainPage = new MainPage();
+            MainPage mainPage = new MainPage(mainWindowFrame);
             mainWindowFrame.Navigate(mainPage);
             mainPage.calculate();
         }
