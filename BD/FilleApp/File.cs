@@ -75,7 +75,7 @@ namespace BD.FilleApp
                         R newR = new R(i);
                         newR.N_plus = Int32.Parse(s[0]);
                         newR.N_minus = Int32.Parse(s[1]);
-                        newR.Z = Int32.Parse(s[2]);
+                        newR.Z = Double.Parse(s[2]);
                         ViewModel.listR.Add(newR);
                     }
                     else
@@ -96,7 +96,7 @@ namespace BD.FilleApp
                         C newC = new C(i);
                         newC.N_plus = Int32.Parse(s[0]);
                         newC.N_minus = Int32.Parse(s[1]);
-                        newC.Z = Int32.Parse(s[2]);
+                        newC.Z = Double.Parse(s[2]);
                         ViewModel.listC.Add(newC);
                     }
                     else
@@ -117,7 +117,7 @@ namespace BD.FilleApp
                         L newL = new L(i);
                         newL.N_plus = Int32.Parse(s[0]);
                         newL.N_minus = Int32.Parse(s[1]);
-                        newL.Z = Int32.Parse(s[2]);
+                        newL.Z = Double.Parse(s[2]);
                         ViewModel.listL.Add(newL);
                     }
                     else
@@ -152,8 +152,8 @@ namespace BD.FilleApp
         {
             foreach (string item in s)
             {
-                int i;
-                bool good = Int32.TryParse(item, out i);
+                double i;
+                bool good = Double.TryParse(item, out i);
                 if (!good) return false;
             }
             return true;

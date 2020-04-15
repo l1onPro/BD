@@ -18,7 +18,7 @@
         </Grid.ColumnDefinitions>
 
         <Menu Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" Background="LightGray" Height="30" Padding="0,5,0,5" VerticalAlignment="Top">
-            <MenuItem Header="Файл" Click="MenuItem_Click">
+            <MenuItem Header="Файл">
                 <MenuItem x:Name="MIOpenFile" Header="Откыть файл" Click="MIOpenFile_Click"></MenuItem>
                 <MenuItem x:Name="MIInpKeyboard" Header="Ввести с клавиатуры" Click="MIInpKeyboard_Click"></MenuItem>
                 <Separator></Separator>
