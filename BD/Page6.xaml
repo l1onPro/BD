@@ -5,11 +5,14 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:BD"
       xmlns:localEx="clr-namespace:BD.Exeption"
+      xmlns:localCon="clr-namespace:BD.Converters"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="600"
       Title="Page6">
     
     <Page.Resources>
+        <localCon:ProxyConverterTest x:Key="ThreePlaceConverter"></localCon:ProxyConverterTest>
+        
         <Style TargetType="{x:Type TextBox}">
             <Setter Property="VerticalAlignment" Value="Center" />
             <Setter Property="Margin" Value="0,2,30,2" />
@@ -161,16 +164,16 @@
                             </Label>
                             <TextBox Grid.Column="1" x:Name="m_z1" Width="40" Height="20"  HorizontalAlignment="Right" Validation.Error="Validation_Error">
                                 <TextBox.Text>
-                                    <Binding Path="Z" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay" NotifyOnValidationError="True">
+                                    <Binding Path="Z" UpdateSourceTrigger="PropertyChanged" Converter="{StaticResource ThreePlaceConverter}" Mode="TwoWay" NotifyOnValidationError="True">
                                         <Binding.ValidationRules>
-                                            <localEx:IsNotNull ValidationStep="RawProposedValue"/>
-                                            <localEx:StringToIntValidationRule ValidationStep="RawProposedValue"/>
+                                            <localEx:IsNotNull ValidationStep="RawProposedValue"/>                                            
                                             <localEx:ValueLengthShort ValidationStep="RawProposedValue"/>
-                                            <localEx:PositiveNumber ValidationStep="RawProposedValue"/>
+                                            <localEx:StringToFloat ValidationStep="RawProposedValue"/>
                                         </Binding.ValidationRules>
                                     </Binding>
                                 </TextBox.Text>
                             </TextBox>
+                            
                         </Grid>
 
                         <Grid>
