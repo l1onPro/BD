@@ -45,11 +45,17 @@ namespace BD.FilleApp
                       + ViewModel.in_ju[i, 3] + " " + ViewModel.z_ju[i, 0] + " " + ViewModel.z_ju[i, 1] + " " + ViewModel.z_ju[i, 2];
                 streamWriter.WriteLine(str);
             }
-
             for (int i = 1; i <= ViewModel.NTRI; i++)
             {
                 str = ViewModel.in_tri[i, 0] + " " + ViewModel.in_tri[i, 1] + " " + ViewModel.in_tri[i, 2] + " "
                       + ViewModel.in_tri[i, 3] + " " + ViewModel.z_tri[i];
+                streamWriter.WriteLine(str);
+            }
+            for (int i = 1; i <= ViewModel.NOU; i++)
+            {
+                str = ViewModel.in_ou[i, 1] + " " + ViewModel.in_ou[i, 2] + " " + ViewModel.in_ou[i, 3] + " "
+                      + ViewModel.in_ou[i, 4] + " " + ViewModel.z_ou[i, 0] + " " + ViewModel.z_ou[i, 1] + " "
+                      + ViewModel.z_ou[i, 2] + " " + ViewModel.z_ou[i, 3];
                 streamWriter.WriteLine(str);
             }
             streamWriter.Close();
@@ -62,7 +68,7 @@ namespace BD.FilleApp
                 char[] sep = { ' ' };
                 string str = "";
                 str = stream.ReadLine();
-                string[] s = str.Split(sep, 7);
+                string[] s = str.Split(sep, 8);
 
                 bool check = CheckTryParse(s);
 
@@ -75,6 +81,7 @@ namespace BD.FilleApp
                     ViewModel.NEU = Int32.Parse(s[4]);
                     ViewModel.NJU= Int32.Parse(s[5]);
                     ViewModel.NTRI = Int32.Parse(s[6]);
+                    ViewModel.NOU = Int32.Parse(s[7]);
 
                     ViewModel.listR = new List<R>();
                     ViewModel.listC= new List<C>();
@@ -184,6 +191,19 @@ namespace BD.FilleApp
                     ViewModel.in_tri[i, 3] = Int32.Parse(s[3]);
                     ViewModel.z_tri[i] = Single.Parse(s[4]);
                 }
+                for (int i = 1; i <= ViewModel.NOU; i++)
+                {
+                    str = stream.ReadLine();
+                    s = str.Split(sep, 8);
+                    ViewModel.in_ou[i, 1] = Int32.Parse(s[0]);
+                    ViewModel.in_ou[i, 2] = Int32.Parse(s[1]);
+                    ViewModel.in_ou[i, 3] = Int32.Parse(s[2]);
+                    ViewModel.in_ou[i, 4] = Int32.Parse(s[3]);
+                    ViewModel.z_ou[i, 0] = Int32.Parse(s[4]);
+                    ViewModel.z_ou[i, 1] = (float)Double.Parse(s[5]);
+                    ViewModel.z_ou[i, 2] = Int32.Parse(s[6]);
+                    ViewModel.z_ou[i, 3] = Int32.Parse(s[7]);
+                }
                 stream.Close();
                 return true;
             }
@@ -201,7 +221,8 @@ namespace BD.FilleApp
                + ViewModel.NL.ToString() + " "
                + ViewModel.NEU.ToString() + " "
                + ViewModel.NJU.ToString() + " "
-               + ViewModel.NTRI.ToString();
+               + ViewModel.NTRI.ToString() + " "
+               + ViewModel.NOU.ToString();
             /*+ ViewModel.N_BPT.ToString() + "/n"
             + ViewModel.N_UPT.ToString() + "/n"
             + ViewModel.NOA.ToString() + "/n"

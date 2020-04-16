@@ -60,7 +60,7 @@ namespace BD
                 for (int kf = 1; kf <= ViewModel.F.Count; kf++)
                 {
                     str = String.Format("{0,12:F2}{1,12:F2}{2,12:F2}" +
-                        "{3,12:F2}{4,12:F2}",
+                        "{3,12:E2}{4,12:E2}",
                             ViewModel.f[kf], ViewModel.kum[kf], ViewModel.kua[kf], ViewModel.rim[kf], ViewModel.ria[kf]);
                     result.AppendText(str + "\r\n");
                 }

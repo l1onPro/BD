@@ -241,7 +241,7 @@
                     <Label Grid.Column="0" Content="Опер. усилители:"></Label>
                     <TextBox Grid.Column="1" Width="35" Height="20" Validation.Error="Validation_Error">
                         <TextBox.Text>
-                            <Binding Path="NOA" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay" NotifyOnValidationError="True">
+                            <Binding Path="NOU" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay" NotifyOnValidationError="True">
                                 <Binding.ValidationRules>
                                     <localEx:IsNotNull ValidationStep="RawProposedValue"/>
                                     <localEx:StringToIntValidationRule ValidationStep="RawProposedValue"/>

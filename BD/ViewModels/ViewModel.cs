@@ -62,6 +62,7 @@ namespace BD.ViewModels
         /// Кол-во ид. ид. Трансформаторов
         /// </summary>
         public static int NTRI { get; set; } = 0;
+        public static int NOU { get; set; } = 0;
 
         public static List<R> listR { get; set; } = new List<R>();
         public static List<C> listC { get; set; } = new List<C>();
@@ -69,7 +70,7 @@ namespace BD.ViewModels
 
         public static List<double> F;
 
-        public static int M = 20, MR = 50, MF = 20, MEU = 20, MJU = 20, MTRI = 20;
+        public static int M = 20, MR = 50, MF = 20, MEU = 20, MJU = 20, MTRI = 20, MOU = 20;
         public static int n = 0, lp, lm, kp, km;
         public static int[,] in_r = new int[MR + 1, 2];
         public static int[,] in_c = new int[MR + 1, 2];
@@ -94,6 +95,8 @@ namespace BD.ViewModels
         public static int[,] in_ju = new int[MEU + 1, 4];
         public static int[,] in_eu = new int[MJU + 1, 4];
         public static int[,] in_tri = new int[MTRI + 1, 4];
+        public static int[,] in_ou = new int[MOU + 1, 5];
+        public static float[,] z_ou = new float[MOU + 1, 4];
         public static float[,] z_ju = new float[MEU + 1, 3];
         public static float[,] z_eu = new float[MJU + 1, 3];
         public static float[] z_tri = new float[MTRI + 1];
@@ -155,7 +158,7 @@ namespace BD.ViewModels
         }
         public static bool IsNotNullNeedEl()
         {
-            if (NR > 0 || NC > 0 || NL > 0 || NTRI > 0 || NEU > 0 || NJU > 0)
+            if (NR > 0)
                 return true;
 
             return false;

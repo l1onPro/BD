@@ -26,6 +26,7 @@ namespace BD.Calculate
                 form_eu();
                 form_ju();
                 form_tri();
+                form_ou();
 
                 form_s();
 
@@ -284,6 +285,64 @@ namespace BD.Calculate
                 }
             }
             ViewModel.n += ViewModel.NTRI;
+        }
+        void form_ou()
+        {
+            Complex cn = new Complex(0, 0);
+            Complex[,] y = new Complex[5, 5];
+            Complex ys = new Complex(0, 0);
+
+            int[,] in_d = new int[2, 2] { { 1, 2 }, { 3, 4 } };
+            int[] in_ju = new int[] { 1, 2, 4, 3 };
+            int i, j, g, ii, jj, l, m;
+            for (int kou = 1; kou <= ViewModel.NOU; kou++)
+            {
+                for (i = 1; i <= 4; i++)
+                {
+                    for (j = 1; j <= 4; j++)
+                    {
+                        y[i, j] = cn;
+                    }
+                }
+
+                for (int k = 0; k <= 1; k++)
+                {
+                    for (l = 0; l <= 1; l++)
+                    {
+                        i = in_d[k, l];
+                        for (m = 0; m <= 1; m++)
+                        {
+                            j = in_d[k, m];
+                            g = (1 - 2 * l) * (1 - 2 * m);
+                            y[i, j] += g / ViewModel.z_ou[kou, k];
+                        }
+                    }
+                }
+
+                ys = ViewModel.z_ou[kou, 2] / (1 + ViewModel.s * 0.16 * ViewModel.z_ou[kou, 2] / ViewModel.z_ou[kou, 3]) / ViewModel.z_ou[kou, 1];
+                for (l = 2; l <= 3; l++)
+                {
+                    i = in_ju[l];
+                    for (m = 0; m <= 1; m++)
+                    {
+                        j = in_ju[m];
+                        g = (1 - 2 * m) * (5 - 2 * l);
+                        y[i, j] += g * ys;
+                    }
+                }
+
+                for (i = 1; i <= 4; i++)
+                {
+                    ii = ViewModel.in_ou[kou, i];
+                    if (ii == 0) continue;
+                    for (j = 1; j <= 4; j++)
+                    {
+                        jj = ViewModel.in_ou[kou, j];
+                        if (jj == 0) continue;
+                        ViewModel.w[ii, jj] += y[i, j];
+                    }
+                }
+            }
         }
     }
 }

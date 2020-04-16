@@ -39,7 +39,7 @@ namespace BD
             }
             else
             {
-                MessageBox.Show("Пожалуйста, введите какое-нибудь значение больше нуля.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Пожалуйста, введите какое-нибудь значение больше нуля у резистора!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
             }            
         }
 

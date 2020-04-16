@@ -60,9 +60,27 @@ namespace BD
                 textBox2.Focus();
             }
             else
-            {
-                JU p4 = new JU(frame);
-                frame.Navigate(p4);
+            {                
+                if (ViewModel.NJU > 0)
+                {
+                    JU p4 = new JU(frame);
+                    frame.Navigate(p4);
+                }
+                else if (ViewModel.NTRI > 0)
+                {
+                    TRI p4 = new TRI(frame);
+                    frame.Navigate(p4);
+                }
+                else if (ViewModel.NOU > 0)
+                {
+                    OU p4 = new OU(frame);
+                    frame.Navigate(p4);
+                }
+                else
+                {
+                    Page4 p4 = new Page4(frame);
+                    frame.Navigate(p4);
+                }
             }
         }
     }

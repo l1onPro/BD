@@ -83,6 +83,9 @@
     <Compile Include="Models\Laws.cs" />
     <Compile Include="Models\R.cs" />
     <Compile Include="Models\TypeInternet.cs" />
+    <Compile Include="OU.xaml.cs">
+      <DependentUpon>OU.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Page10.xaml.cs">
       <DependentUpon>Page10.xaml</DependentUpon>
     </Compile>
@@ -143,6 +146,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="OU.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Page1.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
