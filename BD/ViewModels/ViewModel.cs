@@ -69,7 +69,7 @@ namespace BD.ViewModels
 
         public static List<double> F;
 
-        public static int M = 100, MR = 50, MF = 20, MEU = 20, MJU = 20, MTRI = 20;
+        public static int M = 20, MR = 50, MF = 20, MEU = 20, MJU = 20, MTRI = 20;
         public static int n = 0, lp, lm, kp, km;
         public static int[,] in_r = new int[MR + 1, 2];
         public static int[,] in_c = new int[MR + 1, 2];
@@ -130,10 +130,10 @@ namespace BD.ViewModels
                 f[j] = F[i];
                 j++;
             }
-            lp = Nodes.lp + 1;
-            lm = Nodes.lm + 1;
-            kp = Nodes.kp + 1;
-            km = Nodes.km + 1;
+            lp = Nodes.lp;
+            lm = Nodes.lm;
+            kp = Nodes.kp;
+            km = Nodes.km;
         }
         public static TypeInternet typeInternet { get; set; } = TypeInternet.Own;
         public ViewModel()

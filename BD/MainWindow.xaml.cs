@@ -109,6 +109,7 @@ namespace BD
             MainPage mainPage = new MainPage(mainWindowFrame);
             mainWindowFrame.Navigate(mainPage);
             mainPage.calculate();
+
         }
 
         private void MIInternet_Click(object sender, RoutedEventArgs e)

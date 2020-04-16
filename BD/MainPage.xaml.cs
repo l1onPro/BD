@@ -32,10 +32,10 @@ namespace BD
         {
             Calculate.Calculate calculate = new Calculate.Calculate();
             calculate.CalculateAlg();
-            Page10 p10 = new Page10();
-            _frame.Navigate(p10);
+           /* Page10 p10 = new Page10();
+            _frame.Navigate(p10);*/
 
-            /*//Вывод результатов моделирования
+            //Вывод результатов моделирования
             string str = "";
             str = "Результаты моделирования ";
             result.AppendText(str + "\r\n");
@@ -45,25 +45,26 @@ namespace BD
                 result.AppendText(str + "\r\n");
                 for (int kf = 0; kf <= ViewModel.F.Count; kf++)
                 {
-                    str = String.Format("{0,12:F2}{1,12:E2}{2,12:F2}" +
-                        "{3,12:E2}{4,12:F2}{5,12:E2}{6,12:F2}",
-                          ViewModel.F[kf], ViewModel.kum[kf], ViewModel.kua[kf], ViewModel.rim[kf],
+                    str = String.Format("{0,12:F2}{1,12:F2}{2,12:F2}" +
+                        "{3,12:F2}{4,12:F2}{5,12:F2}{6,12:F2}",
+                          ViewModel.f[kf], ViewModel.kum[kf], ViewModel.kua[kf], ViewModel.rim[kf],
                           ViewModel.ria[kf], ViewModel.rom[kf], ViewModel.roa[kf]);
                     result.AppendText(str + "\r\n");
                 }
             }
             else
             {
+                result.Text = "";
                 str = "    f кГц \t kum \t kua \t rim \t ria";
                 result.AppendText(str + "\r\n");
-                for (int kf = 0; kf <= ViewModel.F.Count; kf++)
+                for (int kf = 1; kf <= ViewModel.F.Count; kf++)
                 {
-                    str = String.Format("{0,12:F2}{1,12:E2}{2,12:F2}" +
-                        "{3,12:E2}{4,12:F2}",
-                            ViewModel.F[kf], ViewModel.kum[kf], ViewModel.kua[kf], ViewModel.rim[kf], ViewModel.ria[kf]);
+                    str = String.Format("{0,12:F2}{1,12:F2}{2,12:F2}" +
+                        "{3,12:F2}{4,12:F2}",
+                            ViewModel.f[kf], ViewModel.kum[kf], ViewModel.kua[kf], ViewModel.rim[kf], ViewModel.ria[kf]);
                     result.AppendText(str + "\r\n");
                 }
-            }*/
+            }
 
             /*string str = "";
             for (int i = 0; i < ViewModels.ViewModel.NR + 1; i++)
@@ -73,8 +74,8 @@ namespace BD
                     str += ViewModels.ViewModel.a[i, j] + " ";
                 }
                 str += "\n";
-            }
-            result.Text = str;*/
+            }*/
+            
         }
     }
 }

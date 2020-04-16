@@ -13,6 +13,8 @@ namespace BD.Calculate
         public void CalculateAlg()
         {            
             ViewModel.vGovno();
+            clear_w();
+
             for (int kf = 1; kf <= ViewModel.F.Count; kf++)
             {
                 ViewModel.s = new Complex(0.0, 2 * Math.PI * ViewModel.f[kf]);
