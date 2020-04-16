@@ -32,7 +32,26 @@ namespace BD.FilleApp
                 str = ViewModel.listL[i].N_plus.ToString() + " " + ViewModel.listL[i].N_minus.ToString() + " " + ViewModel.listL[i].Z.ToString();
                 streamWriter.WriteLine(str);
             }
+            for (int i = 1; i <= ViewModel.NEU; i++)
+            {
+                str = ViewModel.in_eu[i, 0] + " " + ViewModel.in_eu[i, 1] + " " + ViewModel.in_eu[i, 2] + " "
+                      + ViewModel.in_eu[i, 3] + " " + ViewModel.z_eu[i, 0] + " " + ViewModel.z_eu[i, 1] + " " + ViewModel.z_eu[i, 2];
+                streamWriter.WriteLine(str);
+            }
 
+            for (int i = 1; i <= ViewModel.NJU; i++)
+            {
+                str = ViewModel.in_ju[i, 0] + " " + ViewModel.in_ju[i, 1] + " " + ViewModel.in_ju[i, 2] + " "
+                      + ViewModel.in_ju[i, 3] + " " + ViewModel.z_ju[i, 0] + " " + ViewModel.z_ju[i, 1] + " " + ViewModel.z_ju[i, 2];
+                streamWriter.WriteLine(str);
+            }
+
+            for (int i = 1; i <= ViewModel.NTRI; i++)
+            {
+                str = ViewModel.in_tri[i, 0] + " " + ViewModel.in_tri[i, 1] + " " + ViewModel.in_tri[i, 2] + " "
+                      + ViewModel.in_tri[i, 3] + " " + ViewModel.z_tri[i];
+                streamWriter.WriteLine(str);
+            }
             streamWriter.Close();
         }
         public static bool InputFromFile(string fileName)
@@ -43,7 +62,7 @@ namespace BD.FilleApp
                 char[] sep = { ' ' };
                 string str = "";
                 str = stream.ReadLine();
-                string[] s = str.Split(sep, 4);
+                string[] s = str.Split(sep, 7);
 
                 bool check = CheckTryParse(s);
 
@@ -53,6 +72,9 @@ namespace BD.FilleApp
                     ViewModel.NR = Int32.Parse(s[1]);
                     ViewModel.NC = Int32.Parse(s[2]);
                     ViewModel.NL = Int32.Parse(s[3]);
+                    ViewModel.NEU = Int32.Parse(s[4]);
+                    ViewModel.NJU= Int32.Parse(s[5]);
+                    ViewModel.NTRI = Int32.Parse(s[6]);
 
                     ViewModel.listR = new List<R>();
                     ViewModel.listC= new List<C>();
@@ -126,6 +148,42 @@ namespace BD.FilleApp
                         return false;
                     }
                 }
+                for (int i = 1; i <= ViewModel.NEU; i++)
+                {
+                    str = stream.ReadLine();
+                    s = str.Split(sep, 7);
+                    ViewModel.in_eu[i, 0] = Int32.Parse(s[0]);
+                    ViewModel.in_eu[i, 1] = Int32.Parse(s[1]);
+                    ViewModel.in_eu[i, 2] = Int32.Parse(s[2]);
+                    ViewModel.in_eu[i, 3] = Int32.Parse(s[3]);
+                    ViewModel.z_eu[i, 0] = Single.Parse(s[4]);
+                    ViewModel.z_eu[i, 1] = Single.Parse(s[5]);
+                    ViewModel.z_eu[i, 2] = Single.Parse(s[6]);
+                }
+
+                for (int i = 1; i <= ViewModel.NJU; i++)
+                {
+                    str = stream.ReadLine();
+                    s = str.Split(sep, 7);
+                    ViewModel.in_ju[i, 0] = Int32.Parse(s[0]);
+                    ViewModel.in_ju[i, 1] = Int32.Parse(s[1]);
+                    ViewModel.in_ju[i, 2] = Int32.Parse(s[2]);
+                    ViewModel.in_ju[i, 3] = Int32.Parse(s[3]);
+                    ViewModel.z_ju[i, 0] = Single.Parse(s[4]);
+                    ViewModel.z_ju[i, 1] = Single.Parse(s[5]);
+                    ViewModel.z_ju[i, 2] = Single.Parse(s[6]);
+                }
+
+                for (int i = 1; i <= ViewModel.NTRI; i++)
+                {
+                    str = stream.ReadLine();
+                    s = str.Split(sep, 5);
+                    ViewModel.in_tri[i, 0] = Int32.Parse(s[0]);
+                    ViewModel.in_tri[i, 1] = Int32.Parse(s[1]);
+                    ViewModel.in_tri[i, 2] = Int32.Parse(s[2]);
+                    ViewModel.in_tri[i, 3] = Int32.Parse(s[3]);
+                    ViewModel.z_tri[i] = Single.Parse(s[4]);
+                }
                 stream.Close();
                 return true;
             }
@@ -136,11 +194,14 @@ namespace BD.FilleApp
         }
 
         private static string ConvertToStringViewModel()
-        {            
+        {
             return ViewModel.NV.ToString() + " "
                + ViewModel.NR.ToString() + " "
                + ViewModel.NC.ToString() + " "
-               + ViewModel.NL.ToString();
+               + ViewModel.NL.ToString() + " "
+               + ViewModel.NEU.ToString() + " "
+               + ViewModel.NJU.ToString() + " "
+               + ViewModel.NTRI.ToString();
             /*+ ViewModel.N_BPT.ToString() + "/n"
             + ViewModel.N_UPT.ToString() + "/n"
             + ViewModel.NOA.ToString() + "/n"
