@@ -60,12 +60,18 @@
     <Compile Include="Calculate\Calculate.cs" />
     <Compile Include="Complex.cs" />
     <Compile Include="Converters\ProxyConverterTest.cs" />
+    <Compile Include="EU.xaml.cs">
+      <DependentUpon>EU.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Exeption\IsNotNull.cs" />
     <Compile Include="Exeption\IsNotNullValue.cs" />
     <Compile Include="Exeption\PositiveNumber.cs" />
     <Compile Include="Exeption\StringToFloat.cs" />
     <Compile Include="Exeption\ValueLengthShort.cs" />
     <Compile Include="FilleApp\File.cs" />
+    <Compile Include="JU.xaml.cs">
+      <DependentUpon>JU.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
@@ -92,9 +98,20 @@
     <Compile Include="Page9.xaml.cs">
       <DependentUpon>Page9.xaml</DependentUpon>
     </Compile>
+    <Compile Include="TRI.xaml.cs">
+      <DependentUpon>TRI.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewModels\Frequency.cs" />
     <Compile Include="ViewModels\Nodes.cs" />
     <Compile Include="ViewModels\ViewModel.cs" />
+    <Page Include="EU.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="JU.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -163,6 +180,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Page9.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TRI.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

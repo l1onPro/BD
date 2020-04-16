@@ -67,7 +67,7 @@
             </Label>
 
             <TextBox x:Name="m_nextr"  Grid.Column="2" Grid.Row="0" Width="80" Height="20" 
-                     Validation.Error="Validation_Error" IsEnabled="False">
+                     Validation.Error="Validation_Error" IsEnabled="False" Margin="0,0,30,2" VerticalAlignment="Bottom">
                 <TextBox.Text>
                     <Binding Path="CurNum" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay" NotifyOnValidationError="True">
                         <Binding.ValidationRules>

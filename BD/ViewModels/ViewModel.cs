@@ -49,15 +49,27 @@ namespace BD.ViewModels
         /// <summary>
         /// Кол-во ид. трансформаторов
         /// </summary>
-        public static int NTR { get; set; } = 0; 
+        public static int NTR { get; set; } = 0;
+        /// <summary>
+        /// Кол-во ид. ИТУН
+        /// </summary>
+        public static int NJU { get; set; } = 0;
+        /// <summary>
+        /// Кол-во ид. ИНУН
+        /// </summary>
+        public static int NEU { get; set; } = 0;
+        /// <summary>
+        /// Кол-во ид. ид. Трансформаторов
+        /// </summary>
+        public static int NTRI { get; set; } = 0;
 
-        public static List<R> listR { get; set; }
-        public static List<C> listC { get; set; }
-        public static List<L> listL { get; set; }
-        
+        public static List<R> listR { get; set; } = new List<R>();
+        public static List<C> listC { get; set; } = new List<C>();
+        public static List<L> listL { get; set; } = new List<L>();
+
         public static List<double> F;
 
-        public static int M = 100, MR = 50, MF = 20;
+        public static int M = 100, MR = 50, MF = 20, MEU = 20, MJU = 20, MTRI = 20;
         public static int n = 0, lp, lm, kp, km;
         public static int[,] in_r = new int[MR + 1, 2];
         public static int[,] in_c = new int[MR + 1, 2];
@@ -70,6 +82,7 @@ namespace BD.ViewModels
         public static double[,] b = new double[M + 1, M + 1];
         public static double om;
         public static Complex[,] w = new Complex[M + 1, M + 1];
+        public static Complex s;
         public static double[] kum = new double[MF + 1];
         public static double[] kua = new double[MF + 1];
         public static double[] rim = new double[MF + 1];
@@ -77,6 +90,13 @@ namespace BD.ViewModels
         public static double[] rom = new double[MF + 1];
         public static double[] roa = new double[MF + 1];
         public static double[] f = new double[MF + 1];
+
+        public static int[,] in_ju = new int[MEU + 1, 4];
+        public static int[,] in_eu = new int[MJU + 1, 4];
+        public static int[,] in_tri = new int[MTRI + 1, 4];
+        public static float[,] z_ju = new float[MEU + 1, 3];
+        public static float[,] z_eu = new float[MJU + 1, 3];
+        public static float[] z_tri = new float[MTRI + 1];
         public static void vGovno()
         {
             int j = 1;
@@ -135,14 +155,14 @@ namespace BD.ViewModels
         }
         public static bool IsNotNullNeedEl()
         {
-            if (NR > 0 || NC > 0 || NL > 0)
+            if (NR > 0 || NC > 0 || NL > 0 || NTRI > 0 || NEU > 0 || NJU > 0)
                 return true;
 
             return false;
         }
         public static bool IsNotNull()
         {
-            if (NV > 0 || NR > 0 || NC > 0 || NL > 0 || N_BPT > 0 || N_UPT > 0 || NOA > 0 || NT > 0 || NIOA > 0 || NTR > 0)
+            if (NV > 0 || NR > 0 || NC > 0 || NL > 0 || N_BPT > 0 || N_UPT > 0 || NOA > 0 || NT > 0 || NIOA > 0 || NTR > 0 || NTRI > 0 || NEU > 0 || NJU > 0)
                 return true;
 
             return false;

@@ -133,6 +133,48 @@
                     </Grid.ColumnDefinitions>
 
                     <Label Grid.Column="0" Content="ИТУН:"></Label>
+                    <TextBox Grid.Column="1" x:Name="m_NJU" Width="35" Height="20" Validation.Error="Validation_Error">
+                        <TextBox.Text>
+                            <Binding Path="NJU" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay" NotifyOnValidationError="True">
+                                <Binding.ValidationRules>
+                                    <localEx:IsNotNull ValidationStep="RawProposedValue"/>
+                                    <localEx:StringToIntValidationRule ValidationStep="RawProposedValue"/>
+                                    <localEx:ValueLengthShort ValidationStep="RawProposedValue"/>
+                                    <localEx:PositiveNumber ValidationStep="RawProposedValue"/>
+                                </Binding.ValidationRules>
+                            </Binding>
+                        </TextBox.Text>
+                    </TextBox>
+                </Grid>
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*"></ColumnDefinition>
+                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <Label Grid.Column="0" Content="ИНУН:"></Label>
+                    <TextBox Grid.Column="1" x:Name="m_NEU" Width="35" Height="20" Validation.Error="Validation_Error">
+                        <TextBox.Text>
+                            <Binding Path="NEU" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay" NotifyOnValidationError="True">
+                                <Binding.ValidationRules>
+                                    <localEx:IsNotNull ValidationStep="RawProposedValue"/>
+                                    <localEx:StringToIntValidationRule ValidationStep="RawProposedValue"/>
+                                    <localEx:ValueLengthShort ValidationStep="RawProposedValue"/>
+                                    <localEx:PositiveNumber ValidationStep="RawProposedValue"/>
+                                </Binding.ValidationRules>
+                            </Binding>
+                        </TextBox.Text>
+                    </TextBox>
+                </Grid>
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*"></ColumnDefinition>
+                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <Label Grid.Column="0" Content="ИТУТ:"></Label>
                     <TextBox Grid.Column="1" Width="35" Height="20" IsEnabled="False"></TextBox>
                 </Grid>
 
@@ -142,27 +184,7 @@
                         <ColumnDefinition Width="1*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
 
-                    <Label Grid.Column="0" Content="ИТУН:"></Label>
-                    <TextBox Grid.Column="1" Width="35" Height="20" IsEnabled="False"></TextBox>
-                </Grid>
-
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="2*"></ColumnDefinition>
-                        <ColumnDefinition Width="1*"></ColumnDefinition>
-                    </Grid.ColumnDefinitions>
-
-                    <Label Grid.Column="0" Content="ИТУН:"></Label>
-                    <TextBox Grid.Column="1" Width="35" Height="20" IsEnabled="False"></TextBox>
-                </Grid>
-
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="2*"></ColumnDefinition>
-                        <ColumnDefinition Width="1*"></ColumnDefinition>
-                    </Grid.ColumnDefinitions>
-
-                    <Label Grid.Column="0" Content="ИТУН:"></Label>
+                    <Label Grid.Column="0" Content="ИНУТ:"></Label>
                     <TextBox Grid.Column="1" Width="35" Height="20" IsEnabled="False"></TextBox>
                 </Grid>
             </StackPanel>
@@ -282,7 +304,7 @@
                     <Label Grid.Column="0" Content="Ид. Трансформаторы:"></Label>
                     <TextBox Grid.Column="1" Width="35" Height="20" Validation.Error="Validation_Error">
                         <TextBox.Text>
-                            <Binding Path="NTR" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay" NotifyOnValidationError="True">
+                            <Binding Path="NTRI" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay" NotifyOnValidationError="True">
                                 <Binding.ValidationRules>
                                     <localEx:IsNotNull ValidationStep="RawProposedValue"/>
                                     <localEx:StringToIntValidationRule ValidationStep="RawProposedValue"/>

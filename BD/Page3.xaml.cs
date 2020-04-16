@@ -83,7 +83,7 @@ namespace BD
 
             SetParForBackButton();
 
-            Page p4 = new Page4(frame);
+            EU p4 = new EU(frame);
             frame.Navigate(p4);
         }
         private void SetParForBackButton()
@@ -116,7 +116,7 @@ namespace BD
                     DataContext = newL;
                     break;
                 default:
-                    throw new Exception();
+                    break;
             }
         }
         private void FindNewEl()
